@@ -1,5 +1,13 @@
 # 📝 How to Join & Course Structure – DotNet From Zero by Soheil Karami
 
+## 📆 Schedule
+
+- Sessions are held on **Thursdays each week**
+- Time: **08:00 AM to 01:00 PM (Tehran time)**
+- Course starts on: **Thursday, July 31, 2025**
+- Any changes to the schedule will be announced via the **Telegram group**.
+- **Practice sessions** will be coordinated within the group with input from participants and assistant instructors.
+
 ---
 
 ## 🎯 Course Delivery
