@@ -104,4 +104,6 @@ I'll be happy to help!
 
 ---
 
+📄 Back to [README](./index.md)
+📄 Go to [Course Outline](./docs/course-outline.md)
 📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)
