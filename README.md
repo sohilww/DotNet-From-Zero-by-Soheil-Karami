@@ -1,24 +1,26 @@
 # 🎓 DotNet From Zero by Soheil Karami
 
-A free and open‑access course to help aspiring developers learn C# and .NET from scratch and become job‑ready junior .NET developers.
+A free and open-access course to help aspiring developers learn C# and .NET from scratch and become job-ready junior .NET developers.
+
+🔽 [مشاهده نسخه فارسی (Persian version)](./README_FA.md)
 
 ---
 
 ## 📚 What You'll Learn
 
-- C# Fundamentals & OOP  
-- Clean Code Principles  
-- Multi‑layer Architecture (Domain, Application, Infrastructure, API)  
-- Entity Framework Core  
-- Web API (REST, HTTP, Middleware)  
-- Repository Pattern, Testing, and Design Patterns  
+- C# Fundamentals & OOP
+- Clean Code Principles
+- Multi-layer Architecture (Domain, Application, Infrastructure, API)
+- Entity Framework Core
+- Web API (REST, HTTP, Middleware)
+- Repository Pattern, Testing, and Design Patterns
 - Logging, Configuration, Swagger, Docker, and Basic Authentication
 
 ---
 
 ## 🔥 Why is this course free?
 
-This course is completely free and open to everyone. please consider donating to a charity of your choice — only if you're financially able to.  
+This course is completely free and open to everyone. If it helps you, please consider donating to a charity of your choice — only if you're financially able to.
 
 ---
 
