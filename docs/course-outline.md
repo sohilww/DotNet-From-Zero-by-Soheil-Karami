@@ -91,5 +91,5 @@ This file contains the full structure of the free C# and .NET course designed fo
 ---
 
 📄 Back to [README](./readme.md)
-📄 Go to [How to Join](./docs/how-to-join.md)
+📄 Go to [How to Join](./how-to-join.md)
 📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)
