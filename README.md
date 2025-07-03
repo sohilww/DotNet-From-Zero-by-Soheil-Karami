@@ -32,12 +32,17 @@ Created and maintained by **Soheil Karami**
 
 ## 🛠 Tech Stack
 
-- .NET 8 / C#  
-- EF Core  
-- ASP.NET Core Web API  
-- xUnit  
-- Docker  
-- Postman
-- SQL Server
-- Serilog
-- Seq
+- **Language & Runtime:** C# 12, .NET 8 SDK & Runtime
+- **Application Architecture:** Clean Architecture, Multi-layer (Domain, Application, Infrastructure, API)
+- **Data Access:** Entity Framework Core (Code First), LINQ
+- **API Development:** ASP.NET Core Web API, RESTful API design, Routing, Controllers
+- **Validation:** DataAnnotations, FluentValidation
+- **Configuration Management:** appsettings.json, IOptions pattern
+- **Authentication & Authorization:** JWT, [Authorize] attribute
+- **Testing:** xUnit, Test Doubles (Fakes, Stubs), Arrange-Act-Assert (AAA) pattern
+- **Design Patterns:** Factory Method, Abstract Factory, Template Method, Decorator, Composite, Repository Pattern
+- **Error Handling:** ProblemDetails standard, Global exception middleware
+- **Logging:** Microsoft.Extensions.Logging, Serilog (optional)
+- **Containerization:** Docker, Dockerfile, Docker CLI
+- **API Testing Tools:** Postman, Swagger (OpenAPI)
+- **Version Control:** Git, GitHub
