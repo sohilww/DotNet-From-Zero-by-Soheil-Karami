@@ -90,6 +90,6 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-📄 Back to [README](./readme.md)
-📄 Go to [How to Join](./how-to-join.md)
+📄 Back to [README](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/)
+📄 Go to [How to Join](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/docs/how-to-join.html)
 📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)
