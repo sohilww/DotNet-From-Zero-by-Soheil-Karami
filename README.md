@@ -118,4 +118,5 @@ I'll be happy to help!
 
 ---
 
+📢 [Github Repository](https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami)
 📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)

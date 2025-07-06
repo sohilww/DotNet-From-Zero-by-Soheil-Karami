@@ -92,4 +92,5 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 📄 Back to [README](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/)
 📄 Go to [How to Join](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/docs/how-to-join.html)
+📢 [Github Repository](https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami)
 📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)
