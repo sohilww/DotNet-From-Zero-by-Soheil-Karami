@@ -9,7 +9,7 @@ This file contains the full structure of the free C# and .NET course designed fo
 ⏱ Duration: 5 hours  
 🎯 Learn basic C# syntax, structure, object-oriented programming, and introductory clean coding.
 
-- C# language and .NET ecosystem
+- [C# language and .NET ecosystem](./01-C#%20language%20and%20.NET%20ecosystem.md)
 - Variables, types, conditionals, loops
 - Functions, parameters, return values
 - Classes, constructors, properties, inheritance
@@ -90,7 +90,12 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-📄 Back to [README](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/)
-📄 Go to [How to Join](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/docs/how-to-join.html)
+📄 Back to [README](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/)  
+📄 Go to [How to Join](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/docs/how-to-join.html)  
 📢 [Github Repository](https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami)
-📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)
+
+---
+
+📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)  
+📸 [Instagram](https://www.instagram.com/soheilkarami92/)  
+🔗 [LinkedIn](https://www.linkedin.com/in/soheilkarami/)
