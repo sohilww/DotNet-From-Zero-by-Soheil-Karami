@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdot_net_from_zero_by_soheil_karami=self.webpackChunkdot_net_from_zero_by_soheil_karami||[]).push([[1903],{1912:o=>{o.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog","authorsListPath":"/blog/authors"}')}}]);
