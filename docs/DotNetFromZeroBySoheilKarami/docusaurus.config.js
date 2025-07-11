@@ -10,8 +10,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "Dot Net From Zero by Soheil Karami",
+  tagline: "C# and Dotnet are cool",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -20,7 +20,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://sohilww.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -51,7 +51,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami",
         },
         // blog: {
         //   showReadingTime: true,
@@ -62,7 +62,7 @@ const config = {
         //   // Please change this to your repo.
         //   // Remove this to remove the "edit this page" links.
         //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        //     'https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami',
         //   // Useful options to enforce blogging best practices
         //   onInlineTags: 'warn',
         //   onInlineAuthors: 'warn',
@@ -81,9 +81,9 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
+        title: "Dot Net From Zero",
         logo: {
-          alt: "My Site Logo",
+          alt: "Dot Net From Zero Logo",
           src: "img/logo.svg",
         },
         items: [
@@ -93,7 +93,16 @@ const config = {
             position: "left",
             label: "Tutorial",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          {
+            to: "https://www.linkedin.com/in/soheilkarami/",
+            label: "linkedin",
+            position: "left",
+          },
+          {
+            to: "https://www.instagram.com/soheilkarami92/",
+            label: "instagram",
+            position: "left",
+          },
           {
             href: "https://github.com/facebook/docusaurus",
             label: "GitHub",
@@ -117,16 +126,16 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                label: "Instagram",
+                href: "https://www.instagram.com/soheilkarami92/",
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/in/soheilkarami/",
               },
               {
-                label: "X",
-                href: "https://x.com/docusaurus",
+                label: "Telegram",
+                href: "https://t.me/DotNetFromZeroBySoheilKarami",
               },
             ],
           },
@@ -134,17 +143,13 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Dot net From Zero by Soheil Karami. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
