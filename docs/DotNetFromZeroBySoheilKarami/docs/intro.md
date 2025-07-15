@@ -105,8 +105,8 @@ This course was born from a personal desire to help junior developers enter the 
 
 ## 📄 Documents
 
-- [Course Outline](./docs/course-outline.md)
-- [How to Join](./docs/how-to-join.md)
+- [Course Outline](/docs/Inofrmation/course-outline.md)
+- [How to Join](/docs/Inofrmation/how-to-join.md)
 
 ---
 

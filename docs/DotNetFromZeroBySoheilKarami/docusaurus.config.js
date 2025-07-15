@@ -23,7 +23,7 @@ const config = {
   url: "https://sohilww.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: "/DotNet-From-Zero-by-Soheil-Karami/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -98,16 +98,16 @@ const config = {
             label: "linkedin",
             position: "left",
           },
-          {
-            to: "https://www.instagram.com/soheilkarami92/",
-            label: "instagram",
-            position: "left",
-          },
-          {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
-            position: "right",
-          },
+          // {
+          //   to: "https://www.instagram.com/soheilkarami92/",
+          //   label: "instagram",
+          //   position: "left",
+          // },
+          // {
+          //   href: "https://github.com/facebook/docusaurus",
+          //   label: "GitHub",
+          //   position: "right",
+          // },
         ],
       },
       footer: {

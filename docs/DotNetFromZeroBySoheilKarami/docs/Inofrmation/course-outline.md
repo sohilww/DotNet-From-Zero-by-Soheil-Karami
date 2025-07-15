@@ -13,7 +13,7 @@ This file contains the full structure of the free C# and .NET course designed fo
 ⏱ Duration: 5 hours
 🎯 Learn basic C# syntax, structure, object-oriented programming, and introductory clean coding.
 
-- [C# language and .NET ecosystem](./Session1/01-Csharp-language-and-NET-ecosystem.md)
+- C# language and .NET ecosystem
 - Variables, types, conditionals, loops
 - Functions, parameters, return values
 - Classes, constructors, properties, inheritance
