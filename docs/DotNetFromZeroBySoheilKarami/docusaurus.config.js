@@ -78,6 +78,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: "keywords", content: "C#, .NET, programming" },
+        { name: "author", content: "Soheil Karami" },
+        {
+          name: "description",
+          content: "This is my awesome Docusaurus site about X, Y, and Z.",
+        },
+      ],
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
@@ -91,23 +99,8 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Tutorial",
+            label: "Contents",
           },
-          {
-            to: "https://www.linkedin.com/in/soheilkarami/",
-            label: "linkedin",
-            position: "left",
-          },
-          // {
-          //   to: "https://www.instagram.com/soheilkarami92/",
-          //   label: "instagram",
-          //   position: "left",
-          // },
-          // {
-          //   href: "https://github.com/facebook/docusaurus",
-          //   label: "GitHub",
-          //   position: "right",
-          // },
         ],
       },
       footer: {
@@ -117,7 +110,7 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Contents",
                 to: "/docs/intro",
               },
             ],

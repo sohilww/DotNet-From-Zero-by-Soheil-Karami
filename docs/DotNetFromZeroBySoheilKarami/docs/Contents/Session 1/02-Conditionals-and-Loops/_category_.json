@@ -1,3 +1,6 @@
 {
-  "label": "Conditionals and Loops"
+  "label": "Conditionals and Loops",
+  "link": {
+    "type": "generated-index"
+  }
 }
