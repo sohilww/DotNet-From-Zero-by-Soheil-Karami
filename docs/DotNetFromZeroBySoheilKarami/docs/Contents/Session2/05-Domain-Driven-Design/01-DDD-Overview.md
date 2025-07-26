@@ -2,6 +2,11 @@
 title: DDD Overview
 ---
 
+> **Note for students:**  
+> DDD can look intimidating—many people even claim it’s “not for junior devs.”  
+> I disagree. You don’t need to master every nuance today, **but you should know the theory behind these ideas now**.  
+> Understanding the vocabulary early will make the deeper patterns feel familiar when you meet them again in real projects.
+
 # Domain‑Driven Design Overview
 
 Domain‑Driven Design (DDD) is both a **way of thinking** about software and a **toolbox of patterns**.  
@@ -18,14 +23,19 @@ This page is only a **first touch**. To go deeper you’ll need to study the _Bl
 
 ---
 
-## 🔹 Strategic Vocabulary
+### Strategic Vocabulary (Problem Space vs Solution Space)
 
-| Term                    | One‑Line Description                                                                       |
-| ----------------------- | ------------------------------------------------------------------------------------------ |
-| **Bounded Context**     | A boundary inside which a model lives and the language is unambiguous.                     |
-| **Subdomain**           | A boundary inside which a model lives and the language is unambiguous.                     |
-| **Ubiquitous Language** | Shared vocabulary used by both devs and domain experts inside a context.                   |
-| **Context Map**         | Diagram showing how multiple bounded contexts relate (e.g., _Customer BC_ ↔ _Billing BC_). |
+| Term                    | Kind           | Precise Definition                                                                                                                                                 | Quick Example                                                                   |
+| ----------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| **Domain**              | Problem Space  | The whole sphere of knowledge or activity your software addresses.                                                                                                 | “E‑commerce” overall business.                                                  |
+| **Subdomain**           | Problem Space  | A distinct area of responsibility **inside** the domain. Each subdomain solves one business problem.                                                               | “Payments”, “Shipping”, “Catalog”.                                              |
+| **Bounded Context**     | Solution Space | A well‑defined implementation boundary **where a single model and Ubiquitous Language are consistent**. One subdomain may map to one or multiple bounded contexts. | _Payments_ subdomain implemented as **Billing BC** and **Accounting BC**.       |
+| **Ubiquitous Language** | Solution Space | Shared terms used _inside a bounded context_ by both devs and domain experts.                                                                                      | In Billing BC, “Invoice” means an accounts‑receivable document (not a receipt). |
+| **Context Map**         | Solution Space | Diagram that shows relationships and translation between multiple bounded contexts.                                                                                | Billing BC ↔ Shipping BC via `ShipmentPaid` event.                              |
+
+> **Rule of Thumb**  
+> _Domain/Subdomain_ describe **what** problems exist.  
+> _Bounded Context_ describes **where** and **how** we solve them in code.
 
 ### Strategic Subdomain Types
 
@@ -43,10 +53,10 @@ This page is only a **first touch**. To go deeper you’ll need to study the _Bl
 | -------------------- | --------------------------------------------- | ------------------ |
 | **Entity**           | Identity + lifecycle                          | _Blue Book_ Ch. 5  |
 | **Value Object**     | Immutable value, equality by data             | _Blue Book_ Ch. 5  |
-| **Aggregate**        | Consistency boundary, root + children         | _Red Book_ Ch. 6   |
-| **Aggregate Root**   | Gateway to the Aggregate; enforces invariants | _Red Book_ Ch. 6   |
+| **Aggregate**        | Consistency boundary, root + children         | _Blue Book_ Ch. 6  |
+| **Aggregate Root**   | Gateway to the Aggregate; enforces invariants | _Blue Book_ Ch. 6  |
 | **Repository**       | Collection‑like interface for Aggregates      | _Blue Book_ Ch. 6  |
-| **Domain Service**   | Operation that doesn’t fit Entity/VO          | _Red Book_ Ch. 7   |
+| **Domain Service**   | Operation that doesn’t fit Entity/VO          | _Blue Book_ Ch. 5  |
 | **Factory**          | Encapsulate complex creation logic            | _Blue Book_ Ch. 6  |
 
 > **Tip:** Tackle _Strategic_ first (naming, boundaries), then apply the _Tactical_ patterns inside each bounded context.
@@ -103,7 +113,6 @@ public class InvoiceLine
 
 🟦 **Practice**
 
-- Draw a **Context Map** for a simple e‑commerce: _Catalog_, _Ordering_, _Billing_, _Shipping_.
 - Pick one context and list its Entities, Value Objects, and Aggregates.
 
 ---
@@ -112,4 +121,3 @@ public class InvoiceLine
 
 - Strategic design defines **where** things belong; tactical patterns define **how** they work.
 - Boundaries + ubiquitous language dramatically cut hidden maintenance cost.
-- Every code example in this course will live **inside a clear bounded context** as we continue with EF Core and LINQ.
