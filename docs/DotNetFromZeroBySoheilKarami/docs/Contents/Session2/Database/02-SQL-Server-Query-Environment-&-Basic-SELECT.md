@@ -2,8 +2,6 @@
 title: SQL Server — Query Environment & Basic SELECT
 ---
 
-> **Note:** SQL examples use custom markers `sql … ` instead of ```sql fences, matching our course convention.
-
 # SQL Server — Query Environment & Basic SELECT
 
 ---
