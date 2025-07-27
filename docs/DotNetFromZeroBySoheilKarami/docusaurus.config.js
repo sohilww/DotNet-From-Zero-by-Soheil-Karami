@@ -83,11 +83,12 @@ const config = {
         { name: "author", content: "Soheil Karami" },
         {
           name: "description",
-          content: "This is my awesome Docusaurus site about X, Y, and Z.",
+          content:
+            "DotNet From Zero by Soheil Karami – a hands‑on C# course that turns beginners into job‑ready junior developers.",
         },
       ],
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/docusaurus-social-card.png",
       navbar: {
         title: "Dot Net From Zero",
         logo: {
