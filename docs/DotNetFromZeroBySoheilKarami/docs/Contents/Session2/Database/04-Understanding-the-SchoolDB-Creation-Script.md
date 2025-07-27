@@ -126,5 +126,3 @@ We prevent a classroom from having **two teachers in the same time slot**. This 
   - `Description` (optional)
 
 Then add a `SubjectCategoryId` FK column to the existing `Subject` table.
-
----
