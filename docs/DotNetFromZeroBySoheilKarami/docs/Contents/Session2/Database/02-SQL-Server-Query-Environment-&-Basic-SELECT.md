@@ -13,7 +13,7 @@ Simply install **SQL Server Express** (or Developer Edition) and open **SQL 
 1. Launch **SSMS** → _Connect_ to `(local)\SQLEXPRESS` (Windows Auth).
 2. Open a **New Query** window — you’re ready to type T‑SQL.
 
-_(Any T‑SQL client works, but all screenshots in this course come from SSMS.)_
+_(Any T‑SQL client works, but all queries in this course come from SSMS.)_
 
 ---
 
