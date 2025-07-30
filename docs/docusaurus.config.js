@@ -51,7 +51,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami",
+            "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami/blob/main/",
         },
         // blog: {
         //   showReadingTime: true,
