@@ -1,15 +1,19 @@
-# 📋 DotNet From Zero by Soheil Karami – Full Course Outline
+---
+sidebar_position: 2
+---
+
+# Full Course Outline
 
 This file contains the full structure of the free C# and .NET course designed for junior developers.
 
 ---
 
-## 🟩 Session 1 – C# Fundamentals & OOP + Clean Code
+## Session 1 – C# Fundamentals & OOP + Clean Code
 
-⏱ Duration: 5 hours  
+⏱ Duration: 5 hours
 🎯 Learn basic C# syntax, structure, object-oriented programming, and introductory clean coding.
 
-- [C# language and .NET ecosystem](./Session1/01-Csharp-language-and-NET-ecosystem.md)
+- C# language and .NET ecosystem
 - Variables, types, conditionals, loops
 - Functions, parameters, return values
 - Classes, constructors, properties, inheritance
@@ -17,9 +21,9 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-## 🟩 Session 2 – Multi-Layer Architecture, EF Core, Relational DB Concepts
+## Session 2 – Multi-Layer Architecture, EF Core, Relational DB Concepts
 
-⏱ Duration: 5 hours  
+⏱ Duration: 5 hours
 🎯 Understand real project architecture and work with relational databases.
 
 - Domain / Application / Infrastructure / API layers
@@ -30,23 +34,23 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-## 🟩 Session 3 – Web API, REST, Middleware, AOP
+## Session 3 – Web API, REST, Middleware, AOP
 
-⏱ Duration: 5 hours  
+⏱ Duration: 5 hours
 🎯 Build RESTful APIs with ASP.NET Core and explore middleware and AOP concepts.
 
 - What is REST? HTTP verbs and status codes
 - API Routing, Model Binding, Validation
-- Consistent response structure with ApiResponse<T>
+- Consistent response structure with ApiResponse
 - Middleware for logging, error handling
 - Intro to AOP via Action Filters and Decorators
 - Testing APIs with Postman
 
 ---
 
-## 🟩 Session 4 – Repository Pattern, Unit Testing, Design Patterns
+## Session 4 – Repository Pattern, Unit Testing, Design Patterns
 
-⏱ Duration: 5 hours  
+⏱ Duration: 5 hours
 🎯 Structure your project for scalability and testing.
 
 - Repository Pattern implementation
@@ -61,9 +65,9 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-## 🟩 Session 5 – Logging, AppSettings, Swagger, Docker, Auth
+## Session 5 – Logging, AppSettings, Swagger, Docker, Auth
 
-⏱ Duration: 5 hours  
+⏱ Duration: 5 hours
 🎯 Prepare your project for real-world use and deployment.
 
 - Logging with Microsoft.Extensions.Logging
@@ -75,7 +79,7 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-## 🟨 Practice Sessions (Each 3 hours)
+## Practice Sessions (Each 3 hours)
 
 1. Practice 1: C# fundamentals, OOP, Clean Code
 2. Practice 2: EF Core, database structure, CRUD
@@ -83,19 +87,9 @@ This file contains the full structure of the free C# and .NET course designed fo
 
 ---
 
-## ✅ Final Outcome
+## Final Outcome
 
 - A clean, structured, tested, documented Web API project
 - Ready for junior-level .NET positions
 
 ---
-
-📄 Back to [README](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/)  
-📄 Go to [How to Join](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/docs/how-to-join.html)  
-📢 [Github Repository](https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami)
-
----
-
-📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)  
-📸 [Instagram](https://www.instagram.com/soheilkarami92/)  
-🔗 [LinkedIn](https://www.linkedin.com/in/soheilkarami/)

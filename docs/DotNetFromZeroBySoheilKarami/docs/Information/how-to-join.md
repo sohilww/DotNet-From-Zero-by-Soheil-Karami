@@ -1,6 +1,6 @@
-# 📝 How to Join & Course Structure – DotNet From Zero by Soheil Karami
+# How to Join & Course Structure
 
-## 📆 Schedule
+## Schedule
 
 - Sessions are held on **Thursdays each week**
 - Time: **08:00 AM to 01:00 PM (Tehran time)**
@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 Course Delivery
+## Course Delivery
 
 - The course is conducted **entirely online**.
 - Session links will be shared in a **dedicated Telegram group** before each session.
@@ -19,7 +19,7 @@
 
 ---
 
-## 👥 Participant Limit
+## Participant Limit
 
 - Maximum number of participants: **30**
 - Priority is given to those who **register early** and attend the **screening session**.
@@ -27,7 +27,7 @@
 
 ---
 
-## 📌 Prerequisites
+## Prerequisites
 
 - Participants should have a basic understanding of programming concepts, including:
   - Variables
@@ -40,7 +40,7 @@
 
 ---
 
-## 💻 Course Structure
+## Course Structure
 
 - **5 educational sessions**, each 5 hours long
 - **3 practice sessions**, each 3 hours long
@@ -52,7 +52,7 @@
 
 ---
 
-## 📅 Attendance Policy
+## Attendance Policy
 
 - Full attendance is required for educational sessions.
 - Participants are allowed to miss **only one 5-hour session**.
@@ -60,7 +60,7 @@
 
 ---
 
-## 🧪 Final Project & Teamwork
+## Final Project & Teamwork
 
 - A **real-world project** will be assigned as the main course assignment.
 - Participants may choose to **form small teams** to build the project collaboratively.
@@ -69,7 +69,7 @@
 
 ---
 
-## 🤝 Registration
+## Registration
 
 - To register, please complete the form below:  
   🔗 [Registration Form](https://survey.porsline.ir/s/wKpfjwv)
@@ -78,7 +78,7 @@
 
 ---
 
-## 💚 Note
+## Note
 
 This course is offered **completely free of charge**.  
 If you find it valuable and are financially able, you are welcome to donate any amount to a **charity you trust**.  
@@ -86,25 +86,18 @@ Our goal is to promote accessible, high-quality learning and support new develop
 
 ---
 
-## 🌍 Language
+## Language
 
-## This course is delivered entirely in **Persian (Farsi)** and is intended for Persian-speaking learners.
+:::info
+This course is delivered entirely in **Persian (Farsi)** and is intended for Persian-speaking learners.
+:::
 
----
-
-## 📩 Contact the Instructor
+## Contact the Instructor
 
 If you have any questions about the course or need further clarification, feel free to reach out through any of the following:
 
-- Create an issue in the [GitHub repository](https://github.com/sohilww)
+- Create an issue in the [GitHub repository](https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami)
 - Connect on [LinkedIn](https://www.linkedin.com/in/soheilkarami/)
 - Send a direct message via [Instagram](https://www.instagram.com/soheilkarami92/)
 
 I'll be happy to help!
-
----
-
-📄 Back to [README](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/)
-📄 Go to [Course Outline](https://sohilww.github.io/DotNet-From-Zero-by-Soheil-Karami/docs/course-outline.html)
-📢 [Github Repository](https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami)
-📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)

@@ -1,6 +1,10 @@
-# 📝 Getting Started with C# and .NET
+---
+sidebar_position: 1
+---
 
-**Installing Visual Studio and Understanding the Basics**
+# Getting Started with C# and .NET
+
+Installing Visual Studio and Understanding the Basics
 
 ---
 
@@ -188,9 +192,3 @@ Console.ReadKey();
 This waits for the user to press a key before closing the window.
 
 Congratulations! You’ve just written and run your first C# program 🎉
-
----
-
-📢 [Official Telegram Channel](https://t.me/DotNetFromZeroBySoheilKarami)  
-📸 [Instagram](https://www.instagram.com/soheilkarami92/)  
-🔗 [LinkedIn](https://www.linkedin.com/in/soheilkarami/)
