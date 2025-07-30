@@ -20,15 +20,12 @@ b = 20;
 
 Console.WriteLine(a); // Output: 10
 Console.WriteLine(b); // Output: 20
-
 ```
 
 🟨 **Questions for students**
 
 - What happens when you assign a value type to another variable?
 - Why doesn’t changing `b` affect `a` in this case?
-
----
 
 🟦 **Practice**
 
@@ -62,8 +59,6 @@ Console.WriteLine(p1.Name); // Output: Soheil
 
 - What’s being copied here: the object or the reference?
 - Why do both `p1` and `p2` show the same name?
-
----
 
 🟦 **Practice**
 
@@ -102,8 +97,6 @@ Console.WriteLine(arr2[0]); // Output: 99
 
 - Which one uses shared memory?
 - What’s the risk of modifying reference types in methods?
-
----
 
 🟦 **Practice**
 

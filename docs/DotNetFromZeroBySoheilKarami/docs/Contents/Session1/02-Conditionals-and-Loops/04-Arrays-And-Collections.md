@@ -38,39 +38,6 @@ Console.WriteLine(fruits[1]); // Output: orange
 
 ---
 
-## 🔹 Looping through arrays
-
-You can use `for`, `foreach`, or `while` loops to iterate over array elements.
-
-```csharp
-for (int i = 0; i < numbers.Length; i++)
-{
-    Console.WriteLine(numbers[i]);
-}
-```
-
-and
-
-```csharp
-foreach (string fruit in fruits)
-{
-    Console.WriteLine(fruit);
-}
-```
-
-🟨 **Questions for students**
-
-- Can you change the size of an array after it's created?
-- What happens if you try to access an index out of bounds in an array?
-
----
-
-🟦 **Practice**
-
-- Create an array of 5 integers. Assign values and print the sum.
-
----
-
 ## 🔹 What is a List?
 
 A `List<T>` is a **resizable collection** from the `System.Collections.Generic` namespace.
@@ -95,8 +62,6 @@ Console.WriteLine($"Total scores: {scores.Count}");
 🟨 **Questions for students**
 
 - What is the difference between an `array` and a `List<T>`?
-
----
 
 🟦 **Practice**
 
@@ -136,8 +101,6 @@ foreach (var pair in capitals)
 | `Array`                    | Fixed-size, index-based | ❌ No     | ✅ Yes  | ❌ No  |
 | `List<T>`                  | Dynamic array           | ✅ Yes    | ✅ Yes  | ❌ No  |
 | `Dictionary<TKey, TValue>` | Key-value pair storage  | ✅ Yes    | ❌ No   | ✅ Yes |
-
----
 
 🟨 **Questions for students**
 

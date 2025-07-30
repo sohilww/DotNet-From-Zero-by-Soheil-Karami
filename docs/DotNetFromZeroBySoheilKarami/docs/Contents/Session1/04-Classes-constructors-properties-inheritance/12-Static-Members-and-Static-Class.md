@@ -53,8 +53,6 @@ Console.WriteLine(AppTools.ConvertSecondsToMinutes(180)); // Output: 3
 - In what situations would `static` make your code cleaner or simpler?
 - What’s an example of a class you’ve used that was static?
 
----
-
 🟦 **Practice**
 
 - Create a static class called `AppTools` with a method to convert seconds to minutes.
@@ -91,8 +89,6 @@ Console.WriteLine(User.UserCount); // Output: 2
 - Can static methods access `this`?
 - Why do static fields behave like global variables?
 
----
-
 🟦 **Practice**
 
 - Create a class `User` with a static field `UserCount`. Increment it inside the constructor.
@@ -126,8 +122,6 @@ SystemInfo.PrintEnvironment();
 
 - Why can't you create an object of a static class?
 - When is it better to use a static class instead of an instance class?
-
----
 
 🟦 **Practice**
 

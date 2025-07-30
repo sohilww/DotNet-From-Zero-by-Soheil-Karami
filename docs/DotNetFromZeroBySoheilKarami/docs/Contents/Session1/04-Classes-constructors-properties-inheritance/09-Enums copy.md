@@ -57,8 +57,6 @@ enum TreeType
 }
 ```
 
----
-
 ## 🔄 Using Enums in Code
 
 You can use enums in your class like this:
@@ -109,18 +107,12 @@ Console.WriteLine(typeAsString);   // Output: Olive
 - Avoid assigning random integers manually unless necessary
 - Use enums when the set of values is **fixed and known ahead of time**
 
----
-
 🟨 **Question for students**
 
 - Why might enums be better than using strings or numbers directly?
 - Can you think of a real-life system (like a game, app, or website) that would benefit from enums?
 
----
-
 🟦 **Practice**
 
 - Create an enum called `WeatherType` with values: `Sunny`, `Rainy`, `Cloudy`, `Snowy`
 - Write a method that takes a `WeatherType` and prints a message like "It's a sunny day!"
-
----

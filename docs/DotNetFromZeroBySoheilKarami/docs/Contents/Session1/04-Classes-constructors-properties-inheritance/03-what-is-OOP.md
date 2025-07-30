@@ -5,8 +5,7 @@ sidebar_position: 3
 
 # 🚫 What is OOP
 
-Before we dive into Object-Oriented Programming (OOP),  
-let’s try building our tree system **without using any OOP features**.
+Before we dive into Object-Oriented Programming (OOP), let’s try building our tree system **without using any OOP features**.
 
 ---
 
@@ -94,8 +93,7 @@ class PineTree
 
 ## ⚠️ The Problem with This Approach
 
-This kind of code looks okay when you only have 2 or 3 types.  
-But imagine you want to support **20 types of trees** in the future...
+This kind of code looks okay when you only have 2 or 3 types. But imagine you want to support **20 types of trees** in the future...
 
 ### Issues:
 
@@ -111,16 +109,10 @@ But imagine you want to support **20 types of trees** in the future...
 - 🧩 **No Shared Structure**  
   All trees are similar, but the code doesn't express this. There is **no connection** between them.
 
----
-
 🟨 **Question for students**
 
-- What if you wanted to change how trees grow?  
-  Can you update that logic in one place? Or do you need to repeat it everywhere?
-
+- What if you wanted to change how trees grow? Can you update that logic in one place? Or do you need to repeat it everywhere?
 - Can you think of a better way to avoid duplicating `Photosynthesize()` logic?
-
----
 
 🟦 **Practice**
 
@@ -129,9 +121,7 @@ But imagine you want to support **20 types of trees** in the future...
 3. Change only the fruit type
 
 Then imagine this:  
-A new requirement says _"Every tree must log the date when it grows."_  
-Now you have to open 4 files and update all `Grow()` methods manually.  
-Is that scalable?
+A new requirement says _"Every tree must log the date when it grows."_ Now you have to open 4 files and update all `Grow()` methods manually.Is that scalable?
 
 ---
 
@@ -160,14 +150,10 @@ Now imagine we want to change the message — maybe log it differently, or inclu
 
 We’d need to change it in every single class — ❌ that’s duplication.
 
----
-
 🟨 **Question for students**
 
 - Why is code duplication dangerous?
 - Can you think of a real project where repeating logic caused bugs or inconsistencies?
-
----
 
 That's why we need a better approach — one that lets us **reuse shared logic**, **avoid duplication**, and **model real-world relationships**.
 
@@ -198,21 +184,13 @@ Instead of scattering logic across multiple places, OOP helps you:
 | **Encapsulation** | Keeps internal data safe and exposes only what’s necessary         |
 | **Abstraction**   | Hides irrelevant details and shows only what’s essential           |
 
----
-
 🟨 **Question for students**
 
 - Why might OOP help us scale better than copy-pasting code?
 - Which part of your real life could be modeled as an object?
-
----
 
 🟦 **Practice**
 
 - Think about how our `Tree` example can benefit from being written in OOP style.
 - What behaviors are shared?
 - What parts are unique to each tree?
-
----
-
-In the next section, we’ll start applying these OOP principles to improve our tree classes — starting with **Inheritance**.

@@ -30,8 +30,6 @@ Console.WriteLine("File written.");
 - What happens if the file already exists?
 - What if the path is invalid or you don’t have permission?
 
----
-
 🟦 **Practice**
 
 - Write your full name to a text file called `myname.txt`.
@@ -49,8 +47,6 @@ Console.WriteLine($"File content: {text}");
 
 - What happens if the file doesn’t exist?
 - Is the returned data type a string or byte array?
-
----
 
 🟦 **Practice**
 
@@ -89,8 +85,6 @@ using (StreamReader reader = new StreamReader("log.txt"))
 - Why use `using` with StreamReader/Writer?
 - What happens if you forget to close the stream?
 
----
-
 🟦 **Practice**
 
 - Write a list of 5 favorite books line-by-line to a file.
@@ -118,8 +112,6 @@ catch (Exception ex)
     Console.WriteLine("Something went wrong: " + ex.Message);
 }
 ```
-
----
 
 ## 🧹 Clean Code Tips
 

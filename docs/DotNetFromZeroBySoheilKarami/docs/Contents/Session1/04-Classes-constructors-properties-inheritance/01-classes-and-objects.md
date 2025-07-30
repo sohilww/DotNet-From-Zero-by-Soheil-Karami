@@ -46,8 +46,6 @@ Now `myCar` is a real object in memory based on the blueprint `Car`.
 🟨 **Question for students**  
 What is the difference between a class and an object? Can you explain it in your own words?
 
----
-
 🟦 **Practice**  
 Create a class called Book with these fields:
 
@@ -71,12 +69,11 @@ This analogy helps us understand how classes define a structure, while objects a
 
 ### 🖼️ Think of a drawing of a tree.
 
-It shows **branches, leaves, roots, and fruits** — but it's just a drawing.  
-That drawing is like a **class** — it defines the structure of a tree.
+It shows **branches, leaves, roots, and fruits** — but it's just a drawing.That drawing is like a **class** — it defines the structure of a tree.
 
 But you can’t eat a fruit from a picture! 🍎  
-To actually use the tree — to **pick its fruit**, **see it grow**, or **interact with it** —  
-you need to **plant and grow a real tree**.
+To actually use the tree — to **pick its fruit**, **watch it grow**, or **interact with it** —  
+you need to **plant and grow a real one**.
 
 That real, living tree is the **object** — an instance created from the blueprint.
 
@@ -115,14 +112,10 @@ Car myCar = new Car();
 myCar.Honk();
 ```
 
----
-
 🟨 **Question for students**
 
 - Can a class have both **fields** and **methods**?
 - What’s the difference between them?
-
----
 
 🟦 **Practice**
 
@@ -138,7 +131,7 @@ Let’s continue with the **Tree** example:
 
 You might define a class like this:
 
-````csharp
+```csharp
 class Tree
 {
     public string FruitType;
@@ -172,14 +165,12 @@ Think of it like this:
 Tree appleTree = new Tree();
 appleTree.Grow();
 appleTree.ProduceFruit();
-````
+```
 
 🟨 **Question for students**
 
 - What actions would you add to a Tree class?
 - Are those actions shared across all types of trees?
-
----
 
 🟦 **Practice**
 
@@ -188,5 +179,3 @@ Design a Tree class that includes:
 - At least two fields (e.g. `Type`, `Height`)
 - A method called `DisplayInfo()` that prints tree details
 - A method called Grow() that increases the height by 1 meter each time it's called
-
----

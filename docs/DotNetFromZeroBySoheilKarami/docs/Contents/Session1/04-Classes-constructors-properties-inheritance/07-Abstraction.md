@@ -6,7 +6,6 @@ sidebar_position: 7
 # 🧊 Abstraction in C#
 
 **Abstraction** is the OOP principle of **hiding complexity** and **exposing only essential features**.
-
 It helps you build cleaner, simpler, and easier-to-understand systems.
 
 ---
@@ -33,8 +32,7 @@ We want all trees to be able to:
 - Photosynthesize
 - ProduceFruit
 
-But we **don’t care how** each tree does it.  
-We just want a **common interface** for all trees.
+But we **don’t care how** each tree does it. We just want a **common interface** for all trees.
 
 → This is where abstraction helps.
 
@@ -46,8 +44,6 @@ You can use:
 
 - `abstract` classes → when you want to include **some shared logic**
 - `interface` → when you only care about defining **the contract**
-
----
 
 ### 📘 Abstract Class Example
 
@@ -63,8 +59,6 @@ public abstract class Tree
     }
 }
 ```
-
----
 
 ### 📘 Interface Example
 
@@ -87,14 +81,10 @@ public interface ITree
 | Focus          | Who can access the data                  | What operations are available       |
 | Real-life role | Sealed container                         | Simplified control panel or remote  |
 
----
-
 🟨 **Question for students**
 
 - What are some examples of abstraction in real life?
 - Why do we need interfaces if abstract classes exist?
-
----
 
 🟦 **Practice**
 

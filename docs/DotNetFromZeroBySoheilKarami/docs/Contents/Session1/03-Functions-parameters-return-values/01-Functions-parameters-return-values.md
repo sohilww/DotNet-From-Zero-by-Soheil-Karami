@@ -1,6 +1,5 @@
 ---
 title: Functions, Parameters, and Return Values
-sidebar_position: 6
 ---
 
 # 🧩 Functions in C#
@@ -43,8 +42,6 @@ SayHello();
 
 - What happens if we call `SayHello();` inside a `for` loop?
 
----
-
 🟦 **Practice**  
 Write a function that:
 
@@ -74,8 +71,6 @@ GreetUser("Sara");
 🟨 **Question for students**  
 What happens if you call GreetUser(); without passing any value?
 
----
-
 🟦 **Practice**  
 Write a function called `DescribePet` that:
 
@@ -102,8 +97,6 @@ Console.WriteLine($"Sum is: {sum}");
 
 🟨 **Question for students**  
 Can a function return a value and still print something to the console?
-
----
 
 🟦 **Practice**  
 Write a function called `Square` that:
@@ -133,8 +126,6 @@ void CheckAge(int age)
 🟨 **Question for students**  
 What happens if we remove the return keyword and add more code after the condition?
 
----
-
 🟦 **Practice**  
 Write a function `CheckPassword` that:
 
@@ -151,7 +142,7 @@ Here are some best practices to follow when writing methods in C#:
 
 ---
 
-### ✅ 1. Function Names Should Be Clear and Descriptive
+### ✅ Function Names Should Be Clear and Descriptive
 
 Bad:
 
@@ -169,12 +160,12 @@ void SendInvoiceToCustomer() { }
 
 > 📌 Use verbs for functions (`PrintReport`, `CalculateSalary`, `SendEmail`)
 
-### ✅ 2. Keep Functions Small
+### ✅ Keep Functions Small
 
 - A function should do **only one thing**.
 - If you need a comment to explain a block inside a method — extract that block into a separate function
 
-### ✅ 3. Avoid Long Parameter Lists
+### ✅ Avoid Long Parameter Lists
 
 Bad:
 
@@ -187,7 +178,7 @@ Good:
 - Group related values into objects (UserInfo)
 - Use fewer than 4 parameters if possible
 
-### ✅ 4. Prefer Return Values Over Console Outputs
+### ✅ Prefer Return Values Over Console Outputs
 
 Functions should return values, not always Console.WriteLine inside:
 
@@ -202,7 +193,7 @@ int GetDiscount(int age)
 
 Let the caller decide how to display or use the result.
 
-### ✅ 5. Avoid Side Effects
+### ✅ Avoid Side Effects
 
 Functions should not change global state or variables unless absolutely necessary.
 
@@ -223,8 +214,6 @@ void DoSomething()
 - Which of these clean code rules have we accidentally broken before?
 - Can you refactor one of your previous functions to be cleaner?
 
----
-
 🟦 **Practice**  
 Refactor the following function using clean code principles:
 
@@ -239,12 +228,11 @@ void A(string n, int a, string e)
 Hints:
 
 - Rename the method
-- Reduce parameters
 - Return a formatted string instead of printing it
 
 ---
 
-### ✅ 6. Stay at One Level of Abstraction
+### ✅ Stay at One Level of Abstraction
 
 A function should operate at **a single level of abstraction**.  
 Mixing high-level ideas with low-level implementation details makes the code harder to read and maintain.
@@ -303,8 +291,6 @@ Now:
 🟨 **Question for students**
 
 - Do you have any questions about this principle? Let’s discuss them together.
-
----
 
 🟦 **Practice**  
 Refactor this function to separate concerns and stay at one level of abstraction:

@@ -25,13 +25,14 @@ Let’s compare them in terms of **usage**, **flexibility**, and **performance**
 
 ### 📘 Example 1: `for` Loop
 
-````csharp
+```csharp
 string[] names = { "Ali", "Sara", "Reza" };
 
 for (int i = 0; i < names.Length; i++)
 {
     Console.WriteLine($"{i}: {names[i]}");
 }
+```
 
 > ✅ Gives you access to the index, which is useful for tracking position or modifying specific items.
 
@@ -44,7 +45,7 @@ foreach (string name in names)
 {
     Console.WriteLine($"Hello, {name}");
 }
-````
+```
 
 > ✅ Cleaner syntax when you just want to read or display items without needing the index.
 
@@ -67,7 +68,7 @@ Use `foreach` when:
 - You want clean and readable code
 - You're working with List\<T\>, Dictionary\<TKey,TValue\>, arrays, etc.
 
-🟦 **Practice**  
+🟦 **Practice**
 Convert the following `for` loop into a `foreach` loop:
 
 ```csharp

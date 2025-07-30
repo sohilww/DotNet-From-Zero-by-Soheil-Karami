@@ -33,8 +33,6 @@ Console.WriteLine($"X: {p1.X}, Y: {p1.Y}");
 - What are typical use cases where you'd prefer a `struct` over a `class`?
 - What happens if you pass a struct to a method and modify its field?
 
----
-
 🟦 **Practice**
 
 - Create a `struct` called `Point` with `X` and `Y` fields. Create two points and assign values.
@@ -62,8 +60,6 @@ public class Person
 
 - Why are classes more suitable for building application logic?
 - What happens when you assign a class instance to another variable?
-
----
 
 🟦 **Practice**
 
@@ -100,8 +96,6 @@ Console.WriteLine(p1.Age); // Output: 40
 
 - What’s the difference between modifying a class and a struct inside a method?
 - When would copying by reference be a better option?
-
----
 
 🟦 **Practice**
 

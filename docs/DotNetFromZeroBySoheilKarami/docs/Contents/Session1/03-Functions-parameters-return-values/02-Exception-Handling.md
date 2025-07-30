@@ -4,6 +4,8 @@ title: Exception Handling
 
 # Exception Handling
 
+An **exception** is an error that occurs at runtime and interrupts the normal flow of your program.
+
 ## 🔹 What is an Exception?
 
 An **exception** is an error that occurs at runtime and interrupts the normal flow of your program. If not handled properly, it can crash the application.
@@ -25,8 +27,6 @@ int result = x / y; // Runtime exception: DivideByZeroException
 
 - What is the difference between a compile-time error and a runtime exception?
 - Can you guess what kind of exceptions might occur in user input?
-
----
 
 🟦 **Practice**
 
@@ -73,8 +73,6 @@ catch
 - What happens if you remove the `try-catch` block?
 - Can one `catch` block handle all exception types?
 
----
-
 🟦 **Practice**
 
 - Write a program that asks for a number from the user and divides 100 by that number using try-catch.
@@ -108,8 +106,6 @@ catch (DivideByZeroException)
 - What’s the benefit of catching specific exceptions?
 - Can you catch multiple exceptions in a single try block?
 
----
-
 🟦 **Practice**
 
 - Handle both `DivideByZeroException` and `FormatException` separately in the same program.
@@ -140,8 +136,6 @@ finally
 
 - When does the `finally` block run?
 - Can you use a `finally` block without a `catch`?
-
----
 
 🟦 **Practice**
 
@@ -199,14 +193,13 @@ catch (DivideByZeroException)
 - Why is it better to validate inputs before entering a `try-catch` block?
 - What happens if you put too much logic inside a `catch` block?
 
----
-
 🟦 **Practice**
 
-- Refactor the user input + division code so:
-  - Input is handled in one method
-  - Calculation is done in another
-  - Errors are reported in a clean and readable way
+- Rewrite the program to:
+  - Use a `for` or `while` loop to ask the user for **at least 5 numbers**
+  - Try dividing `100` by each entered number
+  - Handle errors (like invalid input or divide-by-zero) cleanly
+  - Keep the logic for **input**, **calculation**, and **error handling** in separate methods
 
 ---
 

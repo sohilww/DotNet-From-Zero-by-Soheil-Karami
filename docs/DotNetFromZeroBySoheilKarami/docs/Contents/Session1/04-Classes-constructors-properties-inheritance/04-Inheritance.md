@@ -20,8 +20,7 @@ Instead of repeating common logic in every class, we write it **once** in the su
 
 ### 🌳 Real Example: Tree System
 
-All types of trees can **photosynthesize** and **have height**,  
-but the way they **grow** and **produce fruit** can be different.
+All types of trees can **photosynthesize** and **have height**, but the way they **grow** and **produce fruit** can be different.
 
 Let’s create a base class called `Tree`, and derive `AppleTree`, `OliveTree`, and `PineTree` from it.
 
@@ -94,12 +93,9 @@ public class PineTree : Tree
 }
 ```
 
----
-
 ## 🧩 Method Customization with `virtual` and `override`
 
 In object-oriented programming, a **superclass** can provide a **default version** of a method using the `virtual` keyword.
-
 Subclasses can then use the `override` keyword to **customize** that method’s behavior.
 
 This allows us to:
@@ -111,7 +107,6 @@ This allows us to:
 
 Let’s say every tree grows, but each one grows at a different rate.  
 We define a `virtual` method in the superclass, and then `override` it in each subclass.
-
 This way, we avoid writing completely separate `Grow()` methods from scratch.
 
 ```csharp
@@ -134,8 +129,6 @@ public class AppleTree : Tree
 }
 ```
 
----
-
 🟨 **Question for students**
 
 - What would happen if we removed `override` in the subclass?
@@ -143,9 +136,7 @@ public class AppleTree : Tree
 
 ### 💡 Answer 1: Removing `override` in the subclass
 
-If you remove `override` in the subclass and try to define the same method,  
-you are actually hiding the base method — not overriding it.  
-This can lead to confusion and unexpected behavior (no polymorphism).
+If you remove `override` in the subclass and try to define the same method, you are actually hiding the base method — not overriding it. This can lead to confusion and unexpected behavior (no polymorphism).
 
 ```csharp
 public class Tree
@@ -171,7 +162,6 @@ public class AppleTree : Tree
 ### 💡 Answer 2: Calling the superclass method
 
 Yes! You can call the superclass version of a method from within the overridden method using the `base` keyword.
-
 This is useful when you want to **extend** the behavior rather than replace it.
 
 ```csharp
@@ -204,8 +194,7 @@ A `protected` field or method is:
 - ❌ Not accessible from outside the class
 - ✅ But available to subclasses
 
-This is perfect when you want to **hide something from the outside**,  
-but still allow subclasses to use it.
+This is perfect when you want to **hide something from the outside**, but still allow subclasses to use it.
 
 ```csharp
 // Inside Tree class
@@ -224,14 +213,10 @@ public override void Grow()
 
 ```
 
----
-
 🟨 **Question for students**
 
 - How is `protected` different from `private` and `public`?
 - Why might a `Tree` want to keep `Height` protected instead of public?
-
----
 
 🟦 **Practice**
 
@@ -241,13 +226,9 @@ public override void Grow()
 
 ---
 
----
-
 ## 🏗️ Calling Superclass Constructors with `base()`
 
-Sometimes, your **superclass has a constructor** that takes arguments —  
-maybe it needs to initialize fields like `Name`, `Height`, or `Age`.
-
+Sometimes, your **superclass has a constructor** that takes arguments — maybe it needs to initialize fields like `Name`, `Height`, or `Age`.
 To pass values from the subclass constructor to the superclass constructor,  
 use the `base(...)` keyword.
 
@@ -285,14 +266,10 @@ public class AppleTree : Tree
 }
 ```
 
----
-
 🟨 **Question for students**
 
 - What happens if the superclass has no parameterless constructor, but the subclass doesn't call `base(...)`?
 - Can we mix custom logic in subclass constructors with base logic?
-
----
 
 🟦 **Practice**
 
@@ -309,7 +286,7 @@ Here are some clean code principles to help you write **safe and scalable inheri
 
 ---
 
-### 1️⃣ Prefer Composition Over Inheritance — When Appropriate
+### ✅ Prefer Composition Over Inheritance — When Appropriate
 
 Before using inheritance, ask yourself:
 
@@ -322,7 +299,7 @@ If it's not a real **type of** relationship, use composition.
 
 ---
 
-### 2️⃣ Avoid Deep Inheritance Trees
+### ✅ Avoid Deep Inheritance Trees
 
 Try to keep your inheritance structure **shallow** — ideally **1–2 levels**.
 
@@ -331,26 +308,24 @@ Changes in the superclass may unexpectedly break subclasses.
 
 ---
 
-### 3️⃣ Don’t Override Just to Change One Line
+### ✅ Don’t Override Just to Change One Line
 
-If you find yourself overriding a method just to slightly change something,  
-it's a sign the method is **doing too much** or needs to be **broken down**.
+If you find yourself overriding a method just to slightly change something, it's a sign the method is **doing too much** or needs to be **broken down**.
 
 ✅ Split the method into smaller pieces  
 ✅ Extract common logic to helper methods
 
 ---
 
-### 4️⃣ Avoid Calling Virtual Methods from Constructors
+### ✅ Avoid Calling Virtual Methods from Constructors
 
-Calling `virtual` or `override` methods from a superclass constructor is dangerous —  
-because the subclass is **not fully constructed yet**.
+Calling `virtual` or `override` methods from a superclass constructor is dangerous — because the subclass is **not fully constructed yet**.
 
 🔒 You might accidentally call a method that depends on uninitialized fields.
 
 ---
 
-### 5️⃣ Use `protected` with Care
+### ✅ Use `protected` with Care
 
 While `protected` is helpful for subclasses, exposing too much internal state makes classes tightly coupled.
 
@@ -358,7 +333,7 @@ While `protected` is helpful for subclasses, exposing too much internal state ma
 
 ---
 
-### 6️⃣ Name Your Superclasses Clearly
+### ✅ Name Your Superclasses Clearly
 
 Avoid vague names like `BaseClass` or `MyBase`.  
 Use meaningful names that reflect shared behavior.
@@ -366,15 +341,11 @@ Use meaningful names that reflect shared behavior.
 ✅ Prefer: `Tree`, `Animal`, `Vehicle`, `Shape`  
 ❌ Avoid: `BaseComponent`, `BaseObject`, `CommonClass`
 
----
-
 🟨 **Question for students**
 
 - Have you seen real-world cases where misuse of inheritance caused problems?
 - Why is `protected` more dangerous than `private`?
 - Can you think of a better way to reuse logic without inheritance?
-
----
 
 🟦 **Practice**
 

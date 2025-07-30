@@ -146,5 +146,3 @@ Write a while loop that:
 - Skips 4
 - Stops if the number is divisible by 5
 - Prints `"Stopped at a multiple of 5"` before breaking
-
----

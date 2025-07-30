@@ -90,8 +90,6 @@ int? score = null;
 Console.WriteLine("Score: " + (score?.ToString() ?? "No score"));
 ```
 
----
-
 ## 📌 Summary
 
 | Concept         | Description                                   |

@@ -43,8 +43,6 @@ This loop prints a greeting for each name in the array.
 - What would happen if the array is empty?
 - Can you use `i++` or indexes inside a `foreach`?
 
----
-
 🟦 **Practice**  
 Write a `foreach` loop that:
 

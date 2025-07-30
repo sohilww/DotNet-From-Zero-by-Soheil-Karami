@@ -5,8 +5,7 @@ sidebar_position: 2
 
 # 🛠️ Constructors and Properties in C#
 
-When you create an object, you often want to **initialize it with values**.  
-That's where **constructors** and **properties** come in.
+When you create an object, you often want to **initialize it with values**.That's where **constructors** and **properties** come in.
 
 ---
 
@@ -35,13 +34,9 @@ You can now create a tree and set its values right when you create it:
 Tree appleTree = new Tree("Apple", 2);
 ```
 
----
-
 🟨 **Question for students**
 
 - What’s the benefit of using constructors instead of setting values one by one?
-
----
 
 🟦 **Practice**
 
@@ -73,8 +68,6 @@ Imagine a **tree**:
 
 You can't just cut into the trunk directly from outside — only the tree itself (internally) can grow or alter those parts.
 
----
-
 🟨 **Question for students**
 
 - What about the **roots** of the tree?  
@@ -98,8 +91,7 @@ Tree appleTree = new Tree("Apple", 2);
 
 ## 🧠 Why Fields Should Be Private (Encapsulation)
 
-If you expose your class’s data directly to the outside world,  
-you lose control over **how it’s used** or **what values are allowed**.
+If you expose your class’s data directly to the outside world, you lose control over **how it’s used** or **what values are allowed**.
 
 Let’s say you have a tree with a public field called `Height`.
 
@@ -129,8 +121,6 @@ That doesn’t make sense in real life — trees don’t shrink to negative heig
 
 This is why we make fields `private` and provide safe access through **properties** or **methods**.
 
----
-
 🟨 **Question for students**
 
 - What could go wrong if any part of your code can directly modify any field of any object?
@@ -139,8 +129,7 @@ This is why we make fields `private` and provide safe access through **propertie
 
 ## 🔍 Validation Logic
 
-If we want to protect the field but still let others assign values,  
-we could write our own **validation logic** in a method:
+If we want to protect the field but still let others assign values, we could write our own **validation logic** in a method:
 
 ```csharp
 class Tree
@@ -175,8 +164,6 @@ Good object-oriented design means:
 - Let the **class itself decide** what is valid or not
 
 Don’t let the outside world mess with your tree’s roots 🌳
-
----
 
 🟦 **Practice**
 
@@ -214,8 +201,7 @@ We’ve already seen how this can lead to problems.
 
 ### ✅ Properties to the Rescue
 
-A **property** lets you define a `get` and `set` method for a private field —  
-but in a much cleaner and more readable way.
+A **property** lets you define a `get` and `set` method for a private field — but in a much cleaner and more readable way.
 
 ```csharp
 class Tree
@@ -239,8 +225,6 @@ class Tree
 
 This gives you control over how the data is accessed or modified.
 
----
-
 🟨 **Question for students**
 
 - Why would a `set` method sometimes include validation, but `get` often doesn’t?
@@ -249,8 +233,7 @@ This gives you control over how the data is accessed or modified.
 
 ## ⚡ Auto-Implemented Properties
 
-If you don’t need custom logic, you can use **auto-properties** —  
-they create the backing field for you automatically.
+If you don’t need custom logic, you can use **auto-properties** — they create the backing field for you automatically.
 
 > Auto-properties are great for cases when you don’t need custom validation
 
@@ -277,14 +260,10 @@ public Tree()
 
 You can still assign the value in the constructor — but no one can change it later.
 
----
-
 🟨 **Question for students**
 
 - What kinds of data should be read-only in a class?
 - Can you name one from real life (e.g. national ID, creation date, etc.)?
-
----
 
 🟦 **Practice**
 

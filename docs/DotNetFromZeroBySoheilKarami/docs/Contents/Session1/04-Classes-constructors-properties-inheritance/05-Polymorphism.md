@@ -5,8 +5,7 @@ sidebar_position: 5
 
 # 🔀 Polymorphism
 
-**Polymorphism** means "**many forms**".  
-It allows you to write code that can work with **different object types** in a consistent way.
+**Polymorphism** means "**many forms**". It allows you to write code that can work with **different object types** in a consistent way.
 
 ---
 
@@ -18,11 +17,9 @@ Imagine you have different types of trees:
 - OliveTree 🫒
 - PineTree 🌲
 
-All of them have a method called `Grow()` —  
-but **each tree grows differently**.
+All of them have a method called `Grow()` — but **each tree grows differently**.
 
-With polymorphism, you can call `Grow()` on any kind of tree,  
-without worrying about which specific tree it is — the correct version will run.
+With polymorphism, you can call `Grow()` on any kind of tree, without worrying about which specific tree it is — the correct version will run.
 
 ---
 
@@ -69,14 +66,10 @@ foreach (Tree tree in forest)
 }
 ```
 
----
-
 🟨 **Question for students**
 
 - How does the program know which `Grow()` to call for each tree?
 - What would happen if `Grow()` was not marked as `virtual`?
-
----
 
 🟦 **Practice**
 
@@ -88,10 +81,9 @@ foreach (Tree tree in forest)
 
 ## ⚙️ How Polymorphism Works in C#
 
-To use polymorphism in C#, you need to declare methods using the `virtual` keyword in the superclass,  
-and override them using `override` in the subclass.
+To use polymorphism in C#, you need to declare methods using the `virtual` keyword in the superclass, and override them using `override` in the subclass.
 
-If you forget to use `virtual` or `override`, the method will be **hidden** — not overridden.
+If you forget to use `override`, the method will be **hidden** — not overridden.
 
 ---
 
@@ -126,19 +118,13 @@ Tree t = new ConfusedTree();
 t.Grow(); // Will print: "Generic tree grows." 😱 (not the subclass version!)
 ```
 
-If you declare a method in a subclass without using `override`,  
-you’re not overriding — you’re hiding the method.
-
-This breaks polymorphism.
-
----
+If you declare a method in a subclass without using `override`, you’re not overriding — you’re hiding the method.
+This **breaks polymorphism**.
 
 🟨 **Question for students**
 
 - What’s the difference between using `override` and `new`?
 - Why can method hiding be dangerous?
-
----
 
 ## 🧼 Clean Code Tips for Polymorphism
 
@@ -148,55 +134,47 @@ Here are best practices to follow:
 
 ---
 
-### ✅ 1. Use `override`, not `new`
+### ✅ Use `override`, not `new`
 
-Using `new` hides the method, but breaks polymorphism.  
-Always prefer `virtual` + `override` to keep behavior predictable.
-
----
-
-### ✅ 2. Don’t override just to call the base method
-
-If your override only calls `base.Method()`, do you really need it?
-
-Keep your method overrides meaningful.
+Using `new` hides the method, but breaks polymorphism. Always prefer `virtual` + `override` to keep behavior predictable.
 
 ---
 
-### ✅ 3. Avoid business logic in the base class
+### ✅ Don’t override just to call the base method
 
-Keep the base class generic — put shared structure or abstract behaviors there.  
-Subclass behavior should live in the subclasses.
-
----
-
-### ✅ 4. Make base methods `abstract` if they must be overridden
-
-If every subclass **must** implement a method, mark it as `abstract`.
-
-This avoids having default logic that might be wrong.
+If your override only calls `base.Method()`, do you really need it? Keep your method overrides meaningful.
 
 ---
 
-### ✅ 5. Design for extensibility
+### ✅ Avoid business logic in the base class
+
+Keep the base class generic — put shared structure or abstract behaviors there. Subclass behavior should live in the subclasses.
+
+---
+
+### ✅ Make base methods `abstract` if they must be overridden
+
+If every subclass **must** implement a method, mark it as `abstract`. This avoids having default logic that might be wrong.
+
+---
+
+### ✅ Design for extensibility
 
 Use polymorphism when you want to **add new types without changing existing logic**.
 
 Your `for` or `foreach` loop should continue to work if you add `CherryTree`, `OrangeTree`, or even `CactusTree`.
-
----
 
 🟨 **Question for students**
 
 - What’s the risk of putting complex logic in the base class?
 - Why might method hiding (`new`) lead to unexpected bugs?
 
----
-
 🟦 **Practice**
 
 - Refactor a class hierarchy to use `virtual` and `override` correctly.
 - Identify any misuse of `new` and correct it.
+
+---
 
 ## 🧱 Abstract Classes and Methods
 
@@ -220,8 +198,6 @@ It serves as a **blueprint** for other classes.
 
 > Think of it like a **template** — you can’t create it directly,  
 > but other classes use it as a base.
-
----
 
 ### 📘 Example: Abstract Tree
 
@@ -282,8 +258,6 @@ foreach (Tree tree in forest)
 - Why would we want to force every tree to implement `Grow()`?
 - Can an abstract class contain non-abstract methods too?
 
----
-
 🟦 **Practice**
 
 - Create an `abstract class Animal` with an abstract method `MakeSound()`.
@@ -298,5 +272,3 @@ foreach (Tree tree in forest)
 | `virtual`  | ✅ Yes                  | ❌ No               | ❌ No                |
 | `abstract` | ❌ No                   | ✅ Yes              | ❌ No                |
 | `new`      | ✅ Yes                  | ❌ No               | ✅ Yes               |
-
----

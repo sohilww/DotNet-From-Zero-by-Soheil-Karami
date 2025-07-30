@@ -73,12 +73,12 @@ FROM dbo.Period p;
 
 - Why must every selected column in a `GROUP BY` query be either aggregated or included in the `GROUP BY` clause?
 - What’s the difference between `COUNT(*)` and `COUNT(column)`?
-- How can you show teachers who have zero assignments?
 
 ---
 
 🟦 **Practice**
 
+- Show teachers who have zero assignments?
 - Show a list of subjects along with the number of classrooms they are taught in.
 - Find the number of teaching assignments scheduled on each weekday (as a name).
 - Show each classroom and how many different subjects are taught there.

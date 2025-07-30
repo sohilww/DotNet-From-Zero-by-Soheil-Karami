@@ -6,7 +6,6 @@ sidebar_position: 8
 # 🤝 Interfaces in C#
 
 An **interface** defines a **contract** that a class agrees to follow.
-
 It tells us **what** the class can do — but not **how** it does it.
 
 ---
@@ -15,8 +14,7 @@ It tells us **what** the class can do — but not **how** it does it.
 
 Think of an **electric plug** 🔌 — it provides a standard interface (shape, voltage).
 
-You can plug in different devices (laptop, phone charger),  
-but **each device has its own implementation** of how it uses electricity.
+You can plug in different devices (laptop, phone charger), but **each device has its own implementation** of how it uses electricity.
 
 ---
 
@@ -49,8 +47,6 @@ public class AppleTree : ITree
     public void ProduceFruit() => Console.WriteLine("Producing apples 🍎");
 }
 ```
-
----
 
 🟨 **Question for students**
 
@@ -105,14 +101,10 @@ public class PineTree : ITree
 - ✅ One interface per responsibility (Single Responsibility Principle)
 - ❌ Don’t create interfaces that are never reused
 
----
-
 🟨 **Question for students**
 
 - What are some real examples of interfaces you’ve seen in .NET or other languages?
 - Why might a team prefer programming to an interface instead of a concrete class?
-
----
 
 🟦 **Practice**
 
@@ -122,52 +114,28 @@ public class PineTree : ITree
 
 ---
 
-## ⚡ Advanced: Default Interface Methods (C# 8+)
+## ⚠️ Important Note on Default Interface Methods (C# 8+)
 
-Starting from C# 8, interfaces can contain **default method implementations**.
+While C# 8 introduced the ability to add default implementations to interfaces, this feature is **controversial** and should be used with caution.
 
-This allows you to define **shared logic** inside the interface itself — something that was previously only possible with abstract classes.
+Interfaces are meant to define **what a class can do** — not **how it should do it**. Putting logic inside an interface may:
 
----
+- Mix contract and behavior (violates clean architecture)
+- Reduce testability and clarity
+- Surprise developers who expect interfaces to be logic-free
 
-Now, any class that implements `ITree`:
-
-- ✅ Must implement `Grow()`
-- ✅ Can skip implementing `Photosynthesize()` — the interface already has a default version
-
----
-
-## ✅ Why is this useful?
-
-- ✅ Lets you add new methods to interfaces without breaking old code
-- ✅ Avoids duplication by providing shared behavior
-- ✅ Makes interfaces more flexible for API design
-
----
-
-## ⚠️ When to use (and when not to)
-
-| Use it when...                               | Avoid it when...                                |
-| -------------------------------------------- | ----------------------------------------------- |
-| You want to evolve interfaces over time      | You need strict separation of interface & logic |
-| You want to reuse default behavior           | You’re targeting old versions of C# / .NET      |
-| You’re building extensible plugin-based code | You want very lightweight interfaces            |
-
----
+> ✅ Use it **only** when evolving shared public interfaces where backward compatibility is critical.
 
 🟨 **Question for students**
 
-- Why might default interface methods help in large applications or libraries?
-- How are they different from methods in abstract classes?
-
----
+- What are the trade-offs of using default interface methods?
+- Why might it be better to move shared behavior into a base class or helper service?
 
 🟦 **Practice**
 
-- Update your `ITree` interface to include a default method `Log()`
-- Let it print `"Tree logged at [DateTime.Now]"` by default
-- Try implementing it in `AppleTree` **without overriding** `Log()`
-- Then override it in `PineTree` to print a custom message
+- Try adding a default method to an interface.
+- Then move the same logic into an abstract base class.
+- Compare which version feels more testable, flexible, and readable.
 
 ---
 

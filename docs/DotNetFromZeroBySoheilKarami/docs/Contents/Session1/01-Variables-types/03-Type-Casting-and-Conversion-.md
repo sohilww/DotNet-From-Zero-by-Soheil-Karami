@@ -21,8 +21,6 @@ Console.WriteLine(myDouble); // Output: 42
 
 ---
 
----
-
 ## 🧮 Data Types Size and Range
 
 Understanding the **size and range** of data types is essential before performing any casting operation. Here's a quick comparison:
@@ -99,8 +97,6 @@ bool success = int.TryParse(input, out int value);
 Console.WriteLine($"Success: {success}, Value: {value}");
 // Output: Success: False, Value: 0
 ```
-
----
 
 ## 📌 Summary
 

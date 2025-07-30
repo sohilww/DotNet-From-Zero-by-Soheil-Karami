@@ -133,11 +133,10 @@ C# supports many more useful types:
 
 💡 **Tip**: Always choose the most specific type for clarity and performance. Avoid `var` unless the type is obvious from the context.
 
-🟨 **Question for students**  
-Why do we need both `float` and `decimal` in C#? Which one would you choose for storing money?
+🟨 **Question for students**
 
-🟨 **Question for students**  
-What do you think are the most important things to consider when working with variables?
+- Why do we need both `float` and `decimal` in C#? Which one would you choose for storing money?
+- What do you think are the most important things to consider when working with variables?
 
 ---
 
@@ -145,11 +144,9 @@ What do you think are the most important things to consider when working with va
 
 Write code to declare the following:
 
-1. A `decimal` variable for a product price
-2. A `DateTime` variable for today's date
-3. A `var` variable for your favorite number
-
-➕ (Optional)  
-Print all three variables to the console.
+- A `decimal` variable for a product price
+- A `DateTime` variable for today's date
+- A `var` variable for your favorite number
+- Print all three variables to the console.
 
 ---

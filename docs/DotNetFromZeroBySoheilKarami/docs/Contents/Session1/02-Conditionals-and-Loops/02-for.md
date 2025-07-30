@@ -133,7 +133,7 @@ for (int glass = 1; glass <= 8; glass++)
 
 ---
 
-### 📘 Example: Stop at 6
+### 📘 Example: Stop at 7
 
 Let’s say you want to print the numbers from 1 to 20,
 but you’re only interested in going until you find the **first number that’s divisible by 7**.
@@ -164,5 +164,5 @@ for (int i = 1; i <= 10; i++)
 Write a `for` loop that:
 
 - Prints numbers from 1 to 20
-- Stops the loop when it reaches the first number divisible by **7**
-- Prints `"Found a multiple of 7!"` before breaking
+- Stops the loop when it reaches the second number divisible by **8**
+- Prints `"Found a multiple of 8!"` before breaking

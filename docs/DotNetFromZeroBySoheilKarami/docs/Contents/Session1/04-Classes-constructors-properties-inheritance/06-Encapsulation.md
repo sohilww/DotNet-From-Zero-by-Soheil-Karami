@@ -5,8 +5,7 @@ sidebar_position: 6
 
 # 🔐 Encapsulation in C#
 
-**Encapsulation** means "**hiding internal details**" and **only exposing what’s necessary**.  
-It’s a key part of writing clean, safe, and maintainable object-oriented code.
+**Encapsulation** means "**hiding internal details**" and **only exposing what’s necessary**. It’s a key part of writing clean, safe, and maintainable object-oriented code.
 
 ---
 
@@ -15,8 +14,7 @@ It’s a key part of writing clean, safe, and maintainable object-oriented code.
 Imagine a real tree:
 
 - 🌿 You can **see** the fruits and leaves → but you **can’t touch the roots**.
-- 🌱 The inner roots of the tree could be modeled as `internal` or `protected`,  
-   since they are **used by internal systems or subclasses**, but not by external consumers.
+- 🌱 The inner roots of the tree could be modeled as `internal` or `protected`, since they are **used by internal systems or subclasses**, but not by external consumers.
 
 This is exactly how encapsulation works in programming:  
 → Protect what's internal, expose only what's useful.
@@ -41,8 +39,6 @@ Now any code can **directly modify** its internal state:
 - Change `FruitType` randomly
 - Break the rules of our domain
 
----
-
 🟨 **Question for students**
 
 - What problems might happen if you expose all your class data?
@@ -51,8 +47,7 @@ Now any code can **directly modify** its internal state:
 
 ## ✅ Encapsulation with `private` + `public`
 
-We can **restrict access** by making fields `private`,  
-and provide **controlled access** using properties or methods.
+We can **restrict access** by making fields `private`, and provide **controlled access** using properties or methods.
 
 ```csharp
 public class Tree
@@ -80,8 +75,6 @@ public class Tree
 }
 ```
 
----
-
 ## 🧠 Why Properties Are Better
 
 Properties let us:
@@ -103,14 +96,10 @@ Properties let us:
 | `protected internal` | Subclasses or same project             |
 | `private protected`  | Same class or subclass in same project |
 
----
-
 🟨 **Question for students**
 
 - Which members of a class should usually be private?
 - When would you use `protected` instead of `private`?
-
----
 
 🟦 **Practice**
 
@@ -124,8 +113,6 @@ Properties let us:
 - ✅ Use properties with validation for critical data
 - ✅ Start with `private`, then only open access if needed
 - ✅ Keep class internals hidden unless you have a good reason
-
----
 
 📌 Remember:
 
