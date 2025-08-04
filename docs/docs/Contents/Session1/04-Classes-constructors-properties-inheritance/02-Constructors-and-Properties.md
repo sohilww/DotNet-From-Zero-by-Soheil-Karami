@@ -169,7 +169,7 @@ Don’t let the outside world mess with your tree’s roots 🌳
 
 - Make the `LeafCount` field of your `Tree` class private
 - Write a method `SetLeafCount(int leafCount)` that accepts only values greater than 0
-- Try creating a tree and test with different height values (valid and invalid)
+- Try creating a tree and test with different leaf count values (valid and invalid)
 
 ---
 
