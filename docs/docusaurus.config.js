@@ -53,21 +53,6 @@ const config = {
           editUrl:
             "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami/blob/main/docs/",
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   feedOptions: {
-        //     type: ['rss', 'atom'],
-        //     xslt: true,
-        //   },
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami',
-        //   // Useful options to enforce blogging best practices
-        //   onInlineTags: 'warn',
-        //   onInlineAuthors: 'warn',
-        //   onUntruncatedBlogPosts: 'warn',
-        // },
         theme: {
           customCss: "./src/css/custom.css",
         },
