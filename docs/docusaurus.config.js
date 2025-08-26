@@ -72,7 +72,6 @@ const config = {
             "DotNet From Zero by Soheil Karami – a hands‑on C# course that turns beginners into job‑ready junior developers.",
         },
       ],
-      // Replace with your project's social card
       image: "img/docusaurus-social-card.png",
       navbar: {
         title: "Dot Net From Zero",
