@@ -4,7 +4,7 @@ title: REST
 
 Why it exists, what it solves.
 
-## 🔹REST — the problem it solves (and how APIs looked before it)
+## REST — the problem it solves (and how APIs looked before it)
 
 Before REST was popular, two common ways to build APIs were:
 
