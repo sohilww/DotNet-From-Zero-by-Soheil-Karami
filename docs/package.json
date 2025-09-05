@@ -14,8 +14,13 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@docusaurus/core": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
+=======
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+>>>>>>> 7a193b16118128ada34af70ddb9f46fc255209b3
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
