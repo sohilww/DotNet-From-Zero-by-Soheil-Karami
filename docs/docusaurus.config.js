@@ -32,10 +32,13 @@ const config = {
   trailingSlash: false,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+<<<<<<< HEAD
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
+=======
+>>>>>>> 7a193b16118128ada34af70ddb9f46fc255209b3
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -51,6 +54,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
+<<<<<<< HEAD
             "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami",
         },
         // blog: {
@@ -68,6 +72,10 @@ const config = {
         //   onInlineAuthors: 'warn',
         //   onUntruncatedBlogPosts: 'warn',
         // },
+=======
+            "https://github.com/sohilww/DotNet-From-Zero-by-Soheil-Karami/blob/main/docs/",
+        },
+>>>>>>> 7a193b16118128ada34af70ddb9f46fc255209b3
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -87,7 +95,10 @@ const config = {
             "DotNet From Zero by Soheil Karami – a hands‑on C# course that turns beginners into job‑ready junior developers.",
         },
       ],
+<<<<<<< HEAD
       // Replace with your project's social card
+=======
+>>>>>>> 7a193b16118128ada34af70ddb9f46fc255209b3
       image: "img/docusaurus-social-card.png",
       navbar: {
         title: "Dot Net From Zero",
