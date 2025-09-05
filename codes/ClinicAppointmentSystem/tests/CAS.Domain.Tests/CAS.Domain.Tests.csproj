@@ -22,4 +22,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\CAS.Domain\CAS.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
