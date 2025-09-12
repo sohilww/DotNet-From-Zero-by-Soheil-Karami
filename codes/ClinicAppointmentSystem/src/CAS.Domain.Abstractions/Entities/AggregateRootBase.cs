@@ -1,6 +1,6 @@
 ﻿namespace CAS.Domain.Abstractions.Entities;
 
-public abstract class AggregateRootBase<TId> : EntityBase<TId>
+public abstract class AggregateRootBase<TId> : EntityBase<TId>, IAggregateRoot
     where TId : notnull
 {
 
