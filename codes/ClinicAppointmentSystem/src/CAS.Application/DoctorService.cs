@@ -1,4 +1,5 @@
 ﻿using CAS.Application.Contract;
+using CAS.Domain;
 
 namespace CAS.Application
 {
@@ -6,10 +7,16 @@ namespace CAS.Application
     {
         public Task<Guid> Create(CreateDoctorDto dto)
         {
-            Guid id = Guid.NewGuid();
-            Doctor doctor = new Doctor();
+            if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-            return Task.FromResult(id);
+            var doctor = new Doctor(
+               name: dto.Name,
+               lastname: dto.LastName,
+               expertise: dto.Speciality,
+               workingDays: new List<int>()
+           );
+
+            return Task.FromResult(doctor.Id);
         }
     }
 }
