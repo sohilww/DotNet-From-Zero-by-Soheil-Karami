@@ -1,9 +1,5 @@
 ﻿namespace CAS.Domain;
 
-public class Class1
-{
-}
-
 public class Doctor(string name, string lastname, string expertise, List<int> workingDays)
 {
     public string Name { get; } = name;
