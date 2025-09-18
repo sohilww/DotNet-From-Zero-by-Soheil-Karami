@@ -1,3 +1,39 @@
+Skip to content
+Navigation Menu
+RandWeb
+DotNet-From-Zero-by-Soheil-Karami
+
+Type / to search
+Code
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Files
+Go to file
+t
+codes/ClinicAppointmentSystem
+src
+tests
+.dockerignore
+.gitignore
+ClinicAppointmentSystem.sln
+global.json
+docs
+.gitignore
+README.md
+linkedin post cover.png
+DotNet-From-Zero-by-Soheil-Karami/codes/ClinicAppointmentSystem
+/.gitignore
+ 
+
+Code
+
+Blame
+53 lines (43 loc) · 465 Bytes
 *.swp
 *.*~
 project.lock.json
@@ -51,3 +87,15 @@ nCrunchTemp*
 
 *.pubxml
 /nuget.config
+Footer
+© 2025 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Community
+Docs
+Contact
+Manage cookies
+Do not share my personal information
