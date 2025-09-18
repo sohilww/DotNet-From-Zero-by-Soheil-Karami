@@ -8,6 +8,6 @@ namespace CAS.Application.Contract
 {
     public interface IDoctorService
     {
-        public Task<Guid> Create(CreateDoctorDto dto);
+        public Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken);
     }
 }

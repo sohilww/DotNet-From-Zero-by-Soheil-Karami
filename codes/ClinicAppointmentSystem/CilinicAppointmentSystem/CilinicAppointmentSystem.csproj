@@ -21,6 +21,7 @@
     <ItemGroup>
       <ProjectReference Include="..\src\CAS.Application.Contract\CAS.Application.Contract.csproj" />
       <ProjectReference Include="..\src\CAS.Application\CAS.Application.csproj" />
+      <ProjectReference Include="..\src\CAS.Infrastructure.InMemoryDatabase\CAS.Infrastructure.InMemoryDatabase.csproj" />
     </ItemGroup>
 
 </Project>

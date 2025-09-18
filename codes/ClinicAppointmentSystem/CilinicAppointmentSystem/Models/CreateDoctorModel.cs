@@ -7,11 +7,17 @@ namespace CilinicAppointmentSystem.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Speciality { get; set; }
+        public string CodeMeli { get; set; }
 
         public CreateDoctorDto MapToDto()
         {
-            return new CreateDoctorDto() { Name = Name, LastName = LastName, Speciality = Speciality,};
+            return new CreateDoctorDto()
+            {
+                Name = Name,
+                LastName = LastName,
+                Speciality = Speciality,
+                CodeMeli = CodeMeli
+            };
         }
-
     }
 }

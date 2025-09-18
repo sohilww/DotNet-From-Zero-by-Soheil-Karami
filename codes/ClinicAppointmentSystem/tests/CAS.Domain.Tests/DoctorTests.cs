@@ -8,7 +8,7 @@ public class DoctorTests
     {
 
         List<int> days = new List<int> { 0, 1, 3 };
-        var doc = new Doctor("Samaneh","Yousefi","dentic",days);
+        var doc = new Doctor("Samaneh","Yousefi","dentic","3001011017",days);
         
         
         //fluent Assertioan
