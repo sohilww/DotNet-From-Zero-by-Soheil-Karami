@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAS.Domain.Patient
+namespace CAS.Domain.Entities
 {
     public class Patient
     {

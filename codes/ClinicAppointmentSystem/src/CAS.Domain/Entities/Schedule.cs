@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices.JavaScript;
 
-namespace CAS.Domain.Schedule;
+namespace CAS.Domain.Entities;
 
 public class Schedule
 {
