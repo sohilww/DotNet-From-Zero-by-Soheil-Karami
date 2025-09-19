@@ -1,3 +1,8 @@
+using CAS.Application;
+using CAS.Application.Contract;
+using CAS.Domain.Repositories;
+using CAS.Infrastructure.InMemoryDatabase;
+
 namespace CilinicAppointmentSystem;
 
 public class Program
@@ -12,6 +17,10 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddControllers();
+
+        builder.Services.AddScoped<IDoctorService, DoctorService>();
+        builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
         var app = builder.Build();
 
@@ -22,9 +31,6 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
-
-        app.UseAuthorization();
 
         var summaries = new[]
         {
@@ -45,6 +51,9 @@ public class Program
             })
             .WithName("GetWeatherForecast")
             .WithOpenApi();
+
+        app.UseRouting();
+        app.MapControllers();
 
         app.Run();
     }
