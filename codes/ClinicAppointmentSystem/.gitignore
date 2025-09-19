@@ -52,4 +52,5 @@ nCrunchTemp*
 bin/
 obj/
 *.log
+*.wsuo
 /nuget.config
