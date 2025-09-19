@@ -24,8 +24,7 @@ namespace CAS.Application
                name: dto.Name,
                lastname: dto.LastName,
                expertise: dto.Speciality,
-               codeMeli : dto.CodeMeli,
-               workingDays: new List<int>()
+               codeMeli : dto.CodeMeli
            );
             
             await _doctorRepository.Create(doctor, cancellationToken);
