@@ -48,6 +48,8 @@ msbuild.err
 msbuild.wrn
 *.lutconfig
 nCrunchTemp*
-*.cs
 *.pubxml
+bin/
+obj/
+*.log
 /nuget.config
