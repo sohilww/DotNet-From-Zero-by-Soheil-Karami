@@ -8,14 +8,20 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\src\CAS.Application.Contract\CAS.Application.Contract.csproj" />
+      <ProjectReference Include="..\src\CAS.Application\CAS.Application.csproj" />
+      <ProjectReference Include="..\src\CAS.Infrastructure.InMemoryDatabase\CAS.Infrastructure.InMemoryDatabase.csproj" />
     </ItemGroup>
 
 </Project>
