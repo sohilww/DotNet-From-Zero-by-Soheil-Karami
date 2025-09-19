@@ -12,7 +12,7 @@ nupkg/
 .idea/
 
 # Visual Studio
-.vs/
+*.vs/
 
 # Fleet
 .fleet/
@@ -48,6 +48,6 @@ msbuild.err
 msbuild.wrn
 *.lutconfig
 nCrunchTemp*
-
+*.cs
 *.pubxml
 /nuget.config
