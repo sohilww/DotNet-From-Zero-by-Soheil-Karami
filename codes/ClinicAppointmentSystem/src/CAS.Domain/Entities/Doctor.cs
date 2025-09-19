@@ -1,10 +1,10 @@
-﻿namespace CAS.Domain.Entities;
+﻿namespace CAS.Domain;
 
-public class Doctor(string name, string lastname, string expertise, List<Schedule> schedules)
+public class Doctor(string name, string lastname, string expertise, List<int> workingDays)
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; } = name;
     public string Lastname { get; } = lastname;
     public string Expertise { get; } = expertise;
-    public List<Schedule> Schedules { get; } = schedules;
+    public List<int> WorkingDays { get; } = workingDays;
 }
+

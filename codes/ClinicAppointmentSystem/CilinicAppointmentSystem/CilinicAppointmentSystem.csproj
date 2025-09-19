@@ -18,4 +18,9 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\src\CAS.Application.Contract\CAS.Application.Contract.csproj" />
+      <ProjectReference Include="..\src\CAS.Application\CAS.Application.csproj" />
+    </ItemGroup>
+
 </Project>

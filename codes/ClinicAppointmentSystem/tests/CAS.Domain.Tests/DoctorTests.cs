@@ -2,7 +2,8 @@ using CAS.Domain.Entities;
 
 namespace CAS.Domain.Tests;
 
-public class UnitTest1
+public class DoctorTests
+
 {
     [Fact]
     public void should_build_doctor_properly()
