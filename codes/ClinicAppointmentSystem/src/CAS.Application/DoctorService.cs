@@ -16,7 +16,7 @@ namespace CAS.Application
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-            if (await _doctorRepository.AlreadyExists(dto.CodeMeli,cancellationToken))
+            if (await _doctorRepository.AlreadyExists(dto.NationalCode,cancellationToken))
                 throw new ArgumentOutOfRangeException();
             
             
@@ -24,7 +24,7 @@ namespace CAS.Application
                name: dto.Name,
                lastname: dto.LastName,
                expertise: dto.Speciality,
-               codeMeli : dto.CodeMeli,
+               nationalCode : dto.NationalCode,
                workingDays: new List<int>()
            );
             
