@@ -2,23 +2,29 @@
 
 public class Doctor
 {
-    public Guid Id { get; }
-    public string Name { get; }
-    public string Lastname { get; }
-    public string Expertise { get; }
-    public string NationalCode { get; set; }
-    public IReadOnlyList<int> WorkingDays { get; }
+    public Guid Id { get; private set; }
+    public string Name { get; private set; }
+    public string LastName { get; private set; }
+    public string Expertise { get; private set; }
+    public string NationalCode { get; private set; }
+    public string ContactInfo { get; private set; }
 
-    public Doctor(string name, string lastname, string expertise, string nationalCode, List<int> workingDays)
+    public Doctor(string name, string lastname, string expertise, string nationalCode, string contactInfo)
     {
         Id = Guid.NewGuid();
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-        Lastname = lastname ?? throw new ArgumentNullException(nameof(lastname));
-        Expertise = expertise ?? throw new ArgumentNullException(nameof(expertise));
-        NationalCode = nationalCode ?? throw new ArgumentNullException(nameof(NationalCode));   
-        WorkingDays = workingDays?.AsReadOnly() ?? throw new ArgumentNullException(nameof(workingDays));
+        Name = name;
+        LastName = lastname;
+        Expertise = expertise;
+        NationalCode = nationalCode;
+        ContactInfo = contactInfo;
     }
 
-   
+    public void UpdateInfo(string name, string lastName, string speciality, string contactInfo)
+    {
+        Name = name;
+        LastName = lastName;
+        Expertise = speciality;
+        ContactInfo = contactInfo;
+    }
 }
 
