@@ -7,16 +7,16 @@ public class Doctor
     public string Name { get; }
     public string Lastname { get; }
     public string Expertise { get; }
-    public string CodeMeli { get; set; }
+    public string NationalCode { get; set; }
     public IReadOnlyList<DoctorSchedule> Schedules  => _doctorSchedules.AsReadOnly();
 
-    public Doctor(string name, string lastname, string expertise, string codeMeli)
+    public Doctor(string name, string lastname, string expertise, string nationalCode)
     {
         Id = Guid.NewGuid();
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Lastname = lastname ?? throw new ArgumentNullException(nameof(lastname));
         Expertise = expertise ?? throw new ArgumentNullException(nameof(expertise));
-        CodeMeli = codeMeli ?? throw new ArgumentNullException(nameof(CodeMeli)); 
+        NationalCode = nationalCode ?? throw new ArgumentNullException(nameof(NationalCode)); 
     }
    public void AddSchedoule(AddScheduleParameters parameters) 
     {

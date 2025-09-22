@@ -24,7 +24,7 @@ public class DoctorServiceTests
         //Arrange,Act,Assert , Triple A
         var id = await _doctorService.Create(new CreateDoctorDto()
         {
-            CodeMeli="5210010104",
+            NationalCode="5210010104",
             LastName = "Yousefi",
             Name = "Samaneh",
             Speciality = "Genral"
@@ -52,7 +52,7 @@ public class DoctorServiceTests
         
         Func<Task> act = async () => { await service.Create(new CreateDoctorDto()
         {
-            CodeMeli="5210010104",
+            NationalCode="5210010104",
             LastName = "Yousefi",
             Name = "Samaneh",
             Speciality = "Genral"
@@ -69,7 +69,7 @@ public class DoctorRepositoryStub : IDoctorRepository
         return Task.FromResult(doctor.Id);
     }
 
-    public Task<bool> AlreadyExists(string codeMeli, CancellationToken cancellationToken)
+    public Task<bool> AlreadyExists(string nationalCode, CancellationToken cancellationToken)
     {
         return Task.FromResult(false);
     }
