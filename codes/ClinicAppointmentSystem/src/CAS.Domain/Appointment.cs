@@ -1,4 +1,4 @@
-﻿using CAS.Domain.Models.Enum;
+﻿using CAS.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

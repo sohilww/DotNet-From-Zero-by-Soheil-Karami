@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAS.Domain.Models;
+namespace CAS.Domain;
 
 //بازه های زمانی فعال هر دکتر برای رزرو در سیستم
 public class DoctorActiveDays

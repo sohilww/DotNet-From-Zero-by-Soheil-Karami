@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CAS.Domain.Models.Enum;
+namespace CAS.Domain.Enum;
 public enum AppointmentStatus
 {
     Reserved,
