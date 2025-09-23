@@ -1,5 +1,7 @@
 using CAS.Application;
 using CAS.Application.Contract;
+using CAS.Domain.Repositories;
+using CAS.Infrastructure.InMemoryDatabase;
 
 namespace CilinicAppointmentSystem;
 
@@ -18,6 +20,7 @@ public class Program
         builder.Services.AddControllers();
 
         builder.Services.AddScoped<IDoctorService, DoctorService>();
+        builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
         var app = builder.Build();
 

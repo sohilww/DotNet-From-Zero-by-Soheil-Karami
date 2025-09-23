@@ -16,15 +16,19 @@ namespace CilinicAppointmentSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateDoctor(CreateDoctorModel createDoctor, CancellationToken cancellationToken)
+        public async Task<ActionResult> CreateDoctor(CreateDoctorModel createDoctor,
+            CancellationToken cancellationToken)
         {
             var dto = createDoctor.MapToDto();
-            var id = await _doctorService.Create(dto);
-            
+            var id = await _doctorService.Create(dto,cancellationToken);
+
+            return CreatedAtAction(nameof(GetById), new { id = id }, dto);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetById(string id, CancellationToken cancellationToken)
+        {
             return Ok();
         }
-        
-
-
     }
 }

@@ -36,7 +36,6 @@ public class DoctorTests
         };
         var doc = new Doctor("Samaneh", "Yousefi", "dentic", days);
 
-
         //fluent Assertioan
 
     }
