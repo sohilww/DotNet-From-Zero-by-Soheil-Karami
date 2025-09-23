@@ -24,11 +24,10 @@ public class DoctorServiceTests
         //Arrange,Act,Assert , Triple A
         var id = await _doctorService.Create(new CreateDoctorDto()
         {
-            NationalCode = "5210010104",
+            NationalCode="5210010104",
             LastName = "Yousefi",
             Name = "Samaneh",
-            Expertise = "Genral",
-            MedicalRecordNumber = "33410010104"
+            Speciality = "Genral"
         }, CancellationToken.None);
 
         id.Should().NotBe(Guid.Empty);
@@ -48,20 +47,16 @@ public class DoctorServiceTests
         var repository = Substitute.For<IDoctorRepository>();
         repository.AlreadyExists(Arg.Any<string>(), Arg.Any<CancellationToken>())
             .Returns(true);
-
-        var service = new DoctorService(repository);
-
-        Func<Task> act = async () =>
+        
+        var service=new DoctorService(repository);
+        
+        Func<Task> act = async () => { await service.Create(new CreateDoctorDto()
         {
-            await service.Create(new CreateDoctorDto()
-            {
-                NationalCode = "5210010104",
-                LastName = "Yousefi",
-                Name = "Samaneh",
-                Expertise = "Genral",
-                MedicalRecordNumber = "33410010104"
-            }, CancellationToken.None);
-        };
+            NationalCode="5210010104",
+            LastName = "Yousefi",
+            Name = "Samaneh",
+            Speciality = "Genral"
+        }, CancellationToken.None); };
 
         await act.Should().ThrowAsync<ArgumentOutOfRangeException>();
     }
@@ -74,7 +69,7 @@ public class DoctorRepositoryStub : IDoctorRepository
         return Task.FromResult(doctor.Id);
     }
 
-    public Task<bool> AlreadyExists(string medicalRecordNumber, CancellationToken cancellationToken)
+    public Task<bool> AlreadyExists(string nationalCode, CancellationToken cancellationToken)
     {
         return Task.FromResult(false);
     }

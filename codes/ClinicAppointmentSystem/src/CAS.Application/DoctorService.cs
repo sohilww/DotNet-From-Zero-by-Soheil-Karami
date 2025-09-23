@@ -23,10 +23,9 @@ namespace CAS.Application
             var doctor = new Doctor(
                name: dto.Name,
                lastname: dto.LastName,
-               expertise: dto.Expertise,
-               nationalCode: dto.NationalCode,
-               schedule: new List<Schedule>(),
-               medicalRecordNumber:dto.MedicalRecordNumber
+               expertise: dto.Speciality,
+               nationalCode : dto.NationalCode,
+               workingDays: new List<int>()
            );
             
             await _doctorRepository.Create(doctor, cancellationToken);

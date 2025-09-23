@@ -6,9 +6,8 @@ namespace CilinicAppointmentSystem.Models
     {
         public string Name { get; set; }
         public string LastName { get; set; }
-        public string Expertise { get; set; }
+        public string Speciality { get; set; }
         public string NationalCode { get; set; }
-        public string CodeMeli { get; set; }
 
         public CreateDoctorDto MapToDto()
         {
@@ -16,9 +15,8 @@ namespace CilinicAppointmentSystem.Models
             {
                 Name = Name,
                 LastName = LastName,
-                Expertise = Expertise,
-                NationalCode = NationalCode,
-                MedicalRecordNumber = CodeMeli,
+                Speciality = Speciality,
+                NationalCode = NationalCode
             };
         }
     }
