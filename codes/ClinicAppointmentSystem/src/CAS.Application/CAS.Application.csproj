@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CAS.Application.Contract\CAS.Application.Contract.csproj" />
     <ProjectReference Include="..\CAS.Domain\CAS.Domain.csproj" />
   </ItemGroup>

@@ -1,6 +1,4 @@
-﻿using CAS.Domain.Models;
-
-namespace CAS.Domain;
+﻿namespace CAS.Domain;
 
 public class Doctor
 {
@@ -8,8 +6,10 @@ public class Doctor
     public string Name { get; }
     public string Lastname { get; }
     public string Expertise { get; }
-    public string CodeMeli { get; set; }
-    //public IReadOnlyList<int> WorkingDays { get; }
+    public string NationalCode { get; set; }
+    public string MedicalRecordNumber { get; set; }
+
+    public List<Schedule> Schedule { get; }
 
     // یک به چند
     public List<Schedule> Schedules { get; private set; } = new();
@@ -17,17 +17,19 @@ public class Doctor
     public List<DoctorActiveDays> DoctorActiveDays { get; private set; } = new();
     public List<DoctorVacation> Vacations { get; private set; } = new();
 
-    public Doctor(string name, string lastname, string expertise, string codeMeli
-        //, List<int> workingDays
+    public Doctor(string name, string lastname, string expertise, string nationalCode, string medicalRecordNumber
+        , List<Schedule> schedule
         )
     {
         Id = Guid.NewGuid();
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Lastname = lastname ?? throw new ArgumentNullException(nameof(lastname));
         Expertise = expertise ?? throw new ArgumentNullException(nameof(expertise));
-        CodeMeli = codeMeli ?? throw new ArgumentNullException(nameof(CodeMeli));   
-        //WorkingDays = workingDays?.AsReadOnly() ?? throw new ArgumentNullException(nameof(workingDays));
+        NationalCode = nationalCode ?? throw new ArgumentNullException(nameof(NationalCode));
+        MedicalRecordNumber = medicalRecordNumber ?? throw new ArgumentNullException(nameof(MedicalRecordNumber));
+        Schedule = schedule?.ToList() ?? new List<Schedule>();
     }
+
 
     // متدهای Domain برای مدیریت Aggregate
     public void AddSchedule(Schedule schedule)

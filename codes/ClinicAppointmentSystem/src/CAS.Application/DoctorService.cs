@@ -16,16 +16,17 @@ namespace CAS.Application
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-            if (await _doctorRepository.AlreadyExists(dto.CodeMeli,cancellationToken))
+            if (await _doctorRepository.AlreadyExists(dto.NationalCode,cancellationToken))
                 throw new ArgumentOutOfRangeException();
             
             
             var doctor = new Doctor(
                name: dto.Name,
                lastname: dto.LastName,
-               expertise: dto.Speciality,
-               codeMeli : dto.CodeMeli,
-               workingDays: new List<int>()
+               expertise: dto.Expertise,
+               nationalCode: dto.NationalCode,
+               schedule: new List<Schedule>(),
+               medicalRecordNumber:dto.MedicalRecordNumber
            );
             
             await _doctorRepository.Create(doctor, cancellationToken);
