@@ -10,19 +10,13 @@ using CAS.Domain.Repositories;
 
 namespace CAS.Application
 {
-    public class AppointmentService : IAppointmentService
+    public class AppointmentService(IAppointmentRepository appointmentRepository) : IAppointmentService
     {
-        private readonly IAppointmentRepository _appointmentRepository;
-        public AppointmentService(IAppointmentRepository appointmentRepository)
-        {
-            _appointmentRepository = appointmentRepository;
-        }
-
         public async Task<Guid> Create(CreateAppointmentDto dto, CancellationToken cancellationToken)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-            if (await _appointmentRepository.AlreadyExists(dto.DoctorId, cancellationToken))
+            if (await appointmentRepository.AlreadyExists(dto.DoctorId, cancellationToken))
                 throw new ArgumentOutOfRangeException();
             var appointment = new Appointment(
                 id: dto.Id,
@@ -31,7 +25,7 @@ namespace CAS.Application
                 date: dto.Date,
                 periodId: dto.PeriodId
             );
-            await _appointmentRepository.Create(appointment, cancellationToken);
+            await appointmentRepository.Create(appointment, cancellationToken);
             return appointment.Id;
         }
     }
