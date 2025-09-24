@@ -12,6 +12,12 @@ namespace CAS.Application
         {
             _doctorRepository = doctorRepository;// => doc => depend on component
         }
+
+        public Task AddSchedule(string nationalCode, AddScheduleDto dto, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public async  Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
@@ -32,6 +38,22 @@ namespace CAS.Application
             return doctor.Id;
         }
 
-   
+        public async Task<CAS.Application.Contract.GetDoctorDto> GetByNationalCode(string nationalCode, CancellationToken cancellationToken)
+        {
+            var doctor = await _doctorRepository.GetByNationalCode(nationalCode, cancellationToken);
+            if (doctor is null)
+                throw new InvalidOperationException($"Doctor with codeMeli {nationalCode} not found");
+
+         
+            return new CAS.Application.Contract.GetDoctorDto
+            {
+                Name = doctor.Name,
+                LastName = doctor.Lastname,
+                Speciality = doctor.Expertise,
+                NationalCode = doctor.NationalCode
+            };
+
+        }
+ 
     }
 }

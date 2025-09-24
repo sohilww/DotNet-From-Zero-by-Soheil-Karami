@@ -16,4 +16,10 @@ public class DoctorRepository : IDoctorRepository
     {
         return _doctors.ContainsKey(nationalCode);
     }
+
+    public async Task<Doctor> GetByNationalCode(string nationalCode, CancellationToken cancellationToken)
+    {
+        return _doctors.GetValueOrDefault(nationalCode);
+    }
+
 }
