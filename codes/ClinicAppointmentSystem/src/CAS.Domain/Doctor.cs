@@ -18,7 +18,7 @@ public class Doctor
         Expertise = expertise ?? throw new ArgumentNullException(nameof(expertise));
         NationalCode = nationalCode ?? throw new ArgumentNullException(nameof(NationalCode)); 
     }
-   public void AddSchedoule(AddScheduleParameters parameters) 
+   public void AddSchedule(AddScheduleParameters parameters) 
     {
         var timeRange = new TimeRange(parameters.startTime, parameters.endTime);
         var doctorSchedoule = new DoctorSchedule(parameters.daysOfWeek, timeRange);

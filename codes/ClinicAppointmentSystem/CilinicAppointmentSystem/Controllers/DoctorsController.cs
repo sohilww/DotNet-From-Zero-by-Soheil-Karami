@@ -22,7 +22,7 @@ namespace CilinicAppointmentSystem.Controllers
             var dto = createDoctor.MapToDto();
             var nationalCode = await _doctorService.Create(dto,cancellationToken);
 
-            return CreatedAtAction(nameof(GetByNationalCode), new { nationalCode = nationalCode }, dto);
+            return CreatedAtAction(nameof(GetByNationalCode), new { nationalCode }, dto);
 
 
         }

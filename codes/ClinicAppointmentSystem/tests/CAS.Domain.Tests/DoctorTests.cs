@@ -23,7 +23,7 @@ public class DoctorTests
         var doctor = new Doctor("Samaneh", "Yousefi", "dentic", "3001011017");
         var addSchedouleParameters = new AddScheduleParameters(DayOfWeek.Sunday, new TimeOnly(12, 00), new TimeOnly(16, 00));
 
-        doctor.AddSchedoule(addSchedouleParameters);
+        doctor.AddSchedule(addSchedouleParameters);
 
         doctor.Schedules.Should().HaveCount(1);
     }
@@ -35,7 +35,7 @@ public class DoctorTests
         var doctor = new Doctor("Samaneh", "Yousefi", "dentic", "3001011017");
         var addSchedouleParameters = new AddScheduleParameters(DayOfWeek.Sunday, new TimeOnly(16, 00), new TimeOnly(12, 00));
 
-        Action act = () => doctor.AddSchedoule(addSchedouleParameters);
+        Action act = () => doctor.AddSchedule(addSchedouleParameters);
 
         act.Should().Throw<ArgumentException>().WithMessage("End time must be after start time.");
     }
