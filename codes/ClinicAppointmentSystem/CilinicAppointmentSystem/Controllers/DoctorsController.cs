@@ -20,15 +20,38 @@ namespace CilinicAppointmentSystem.Controllers
             CancellationToken cancellationToken)
         {
             var dto = createDoctor.MapToDto();
-            var id = await _doctorService.Create(dto,cancellationToken);
+            var nationalCode = await _doctorService.Create(dto,cancellationToken);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, dto);
+            return CreatedAtAction(nameof(GetByNationalCode), new { nationalCode }, dto);
+
+
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetById(string id, CancellationToken cancellationToken)
+        [HttpGet("{nationalCode}")]
+        public async Task<ActionResult> GetByNationalCode(string nationalCode, CancellationToken cancellationToken)
         {
-            return Ok();
+
+            var doctor = await _doctorService.GetByNationalCode(nationalCode, cancellationToken);
+            return Ok(doctor);
         }
+
+        [HttpPost("{nationalCode}/schedules")]
+        public async Task<IActionResult> AddSchedule(string nationalCode, [FromBody] AddScheduleModel addWorkSchedule, CancellationToken cancellationToken)
+        {
+            try
+            {
+                await _doctorService.AddSchedule(nationalCode, addWorkSchedule.MapToDto(), cancellationToken);
+                return NoContent();
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentNullException)
+            {
+                return BadRequest("Invalid schedule data");
+            }
+        }
+
     }
 }

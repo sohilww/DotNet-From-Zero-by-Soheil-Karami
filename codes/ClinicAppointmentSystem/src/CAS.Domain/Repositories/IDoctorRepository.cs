@@ -4,4 +4,6 @@ public interface IDoctorRepository
 {
     Task<Guid> Create(Doctor doctor, CancellationToken cancellationToken);
     Task<bool> AlreadyExists(string nationalCode,CancellationToken cancellationToken);
+    Task<Doctor> GetByNationalCode(string nationalCode, CancellationToken cancellationToken);
+
 }
