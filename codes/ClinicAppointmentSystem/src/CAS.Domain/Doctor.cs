@@ -1,24 +1,42 @@
-﻿namespace CAS.Domain;
+﻿using Framework.Core;
+using Framework.Domain;
 
-public class Doctor
+namespace CAS.Domain;
+
+public class Doctor : AggregateRoot<DoctorId>
 {
-    public Guid Id { get; }
-    public string Name { get; }
-    public string Lastname { get; }
-    public string Expertise { get; }
-    public string NationalCode { get; set; }
-    public IReadOnlyList<int> WorkingDays { get; }
+    public string Name { get;private set; }
+    public string Lastname { get;private set; }
+    public string Speciality { get;private set; }
+    public string NationalityCode { get;private set; }
+    public string MedicalCouncilNumber { get;private set; }
+    public Gender Gender { get;private set; }
+    public ContactInfo ContactInfo { get;private set; }
 
-    public Doctor(string name, string lastname, string expertise, string nationalCode, List<int> workingDays)
+    public Doctor(DoctorId id, string name, string lastname,
+        string expertise, string nationalityCode, string medicalCouncilNumber, Gender gender, ContactInfo contactInfo)
+        : base(id)
     {
-        Id = Guid.NewGuid();
-        Name = name ?? throw new ArgumentNullException(nameof(name));
-        Lastname = lastname ?? throw new ArgumentNullException(nameof(lastname));
-        Expertise = expertise ?? throw new ArgumentNullException(nameof(expertise));
-        NationalCode = nationalCode ?? throw new ArgumentNullException(nameof(NationalCode));   
-        WorkingDays = workingDays?.AsReadOnly() ?? throw new ArgumentNullException(nameof(workingDays));
+        if(string.IsNullOrEmpty(name))
+            throw new ArgumentNullException(nameof(name));
+        
+        if(name.Length < 2)
+            throw new ArgumentNullException(nameof(name));
+        
+        
+        if(string.IsNullOrEmpty(lastname))
+            throw new ArgumentNullException(nameof(lastname));
+        
+        if(!NationalityCodeValidator.IsValid(nationalityCode))
+            throw new ArgumentNullException(nameof(nationalityCode));
+        
+
+        Name = name;
+        Lastname = lastname;
+        Speciality = expertise ?? throw new ArgumentNullException(nameof(expertise));
+        NationalityCode = nationalityCode ?? throw new ArgumentNullException(nameof(NationalityCode));
+        MedicalCouncilNumber = medicalCouncilNumber;
+        Gender = gender;
+        ContactInfo = contactInfo;
     }
-
-   
 }
-

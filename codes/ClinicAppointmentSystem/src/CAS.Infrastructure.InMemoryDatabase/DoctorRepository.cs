@@ -6,9 +6,9 @@ namespace CAS.Infrastructure.InMemoryDatabase;
 public class DoctorRepository : IDoctorRepository
 {   
     static Dictionary<string, Doctor> _doctors = new Dictionary<string, Doctor>();  
-    public async Task<Guid> Create(Doctor doctor, CancellationToken cancellationToken)
+    public async Task<DoctorId> Create(Doctor doctor, CancellationToken cancellationToken)
     {
-        _doctors.Add(doctor.NationalCode, doctor);
+        _doctors.Add(doctor.NationalityCode, doctor);
         return doctor.Id;
     }
 

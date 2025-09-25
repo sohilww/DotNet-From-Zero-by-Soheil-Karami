@@ -2,6 +2,7 @@ using CAS.Application;
 using CAS.Application.Contract;
 using CAS.Domain.Repositories;
 using CAS.Infrastructure.InMemoryDatabase;
+using Newtonsoft.Json.Converters;
 
 namespace CilinicAppointmentSystem;
 
@@ -17,11 +18,15 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().AddNewtonsoftJson(options =>
+        {
+            options.SerializerSettings.Converters.Add(new StringEnumConverter());
+        });
 
         builder.Services.AddScoped<IDoctorService, DoctorService>();
         builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
+        
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -31,26 +36,7 @@ public class Program
             app.UseSwaggerUI();
         }
 
-
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        app.MapGet("/weatherforecast", (HttpContext httpContext) =>
-            {
-                var forecast = Enumerable.Range(1, 5).Select(index =>
-                        new WeatherForecast
-                        {
-                            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                            TemperatureC = Random.Shared.Next(-20, 55),
-                            Summary = summaries[Random.Shared.Next(summaries.Length)]
-                        })
-                    .ToArray();
-                return forecast;
-            })
-            .WithName("GetWeatherForecast")
-            .WithOpenApi();
+        
 
         app.UseRouting();
         app.MapControllers();
