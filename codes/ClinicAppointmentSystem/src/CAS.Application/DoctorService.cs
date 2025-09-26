@@ -8,31 +8,36 @@ namespace CAS.Application
     {
         private readonly IDoctorRepository _doctorRepository;
 
-        public DoctorService(IDoctorRepository  doctorRepository)
+        public DoctorService(IDoctorRepository doctorRepository)
         {
-            _doctorRepository = doctorRepository;// => doc => depend on component
+            _doctorRepository = doctorRepository; // => doc => depend on component
         }
-        public async  Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken)
+
+        public async Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-            if (await _doctorRepository.AlreadyExists(dto.NationalCode,cancellationToken))
+            if (await _doctorRepository.AlreadyExists(dto.NationalCode, cancellationToken))
                 throw new ArgumentOutOfRangeException();
-            
-            
-            var doctor = new Doctor(
-               name: dto.Name,
-               lastname: dto.LastName,
-               expertise: dto.Speciality,
-               nationalCode : dto.NationalCode,
-               workingDays: new List<int>()
-           );
-            
+
+            var id = DoctorId.Generate();
+
+            var doctor = new Doctor(id,
+                name: dto.Name,
+                lastname: dto.LastName,
+                expertise: dto.Speciality,
+                nationalityCode: dto.NationalCode,
+                medicalCouncilNumber: dto.MedicalCouncilNumber,
+                gender: (Gender)dto.Gender,new ContactInfo()
+                {
+                    Address = dto.ContactInfoDto.Address,
+                    MobileNumber = dto.ContactInfoDto.MobileNumber,
+                    PhoneNumber = dto.ContactInfoDto.PhoneNumber
+                });
+
             await _doctorRepository.Create(doctor, cancellationToken);
 
-            return doctor.Id;
+            return doctor.Id.DbId;
         }
-
-   
     }
 }

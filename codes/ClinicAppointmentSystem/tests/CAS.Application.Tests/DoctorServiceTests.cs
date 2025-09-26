@@ -27,7 +27,15 @@ public class DoctorServiceTests
             NationalCode="5210010104",
             LastName = "Yousefi",
             Name = "Samaneh",
-            Speciality = "Genral"
+            Speciality = "Genral",
+            Gender = GenderDto.Female,
+            MedicalCouncilNumber = "1234567890",
+            ContactInfoDto = new ContactInfoDto()
+            {
+                Address = "somewhere",
+                MobileNumber = "0912123456",
+                PhoneNumber = "02183333"
+            }
         }, CancellationToken.None);
 
         id.Should().NotBe(Guid.Empty);
@@ -64,7 +72,7 @@ public class DoctorServiceTests
 
 public class DoctorRepositoryStub : IDoctorRepository
 {
-    public Task<Guid> Create(Doctor doctor, CancellationToken cancellationToken)
+    public Task<DoctorId> Create(Doctor doctor, CancellationToken cancellationToken)
     {
         return Task.FromResult(doctor.Id);
     }
