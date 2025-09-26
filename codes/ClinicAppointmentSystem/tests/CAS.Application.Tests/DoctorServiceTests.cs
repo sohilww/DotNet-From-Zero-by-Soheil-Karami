@@ -72,7 +72,7 @@ public class DoctorServiceTests
 
 public class DoctorRepositoryStub : IDoctorRepository
 {
-    public Task<DoctorId> Create(Doctor doctor, CancellationToken cancellationToken)
+    Task<DoctorId> IDoctorRepository.Create(Doctor doctor, CancellationToken cancellationToken)
     {
         return Task.FromResult(doctor.Id);
     }

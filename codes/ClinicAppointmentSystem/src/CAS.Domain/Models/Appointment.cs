@@ -13,7 +13,7 @@ public class Appointment
     public Guid PatientId { get; private set; }
     public DateTime Date { get; private set; }
     public Guid PeriodId { get; private set; }
-    public AppointmentStatus Status { get; private set; }
+    //public AppointmentStatus Status { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime ModifiedAt { get; private set; }
 
@@ -24,20 +24,20 @@ public class Appointment
         PatientId = patientId;
         Date = date;
         PeriodId = periodId;
-        Status = AppointmentStatus.Reserved;
+        //Status = AppointmentStatus.Reserved;
         CreatedAt = DateTime.UtcNow;
         ModifiedAt = DateTime.UtcNow;
     }
 
     public void Confirm()
     {
-        Status = AppointmentStatus.Confirmed;
+        //Status = AppointmentStatus.Confirmed;
         ModifiedAt = DateTime.UtcNow;
     }
 
     public void Cancel()
     {
-        Status = AppointmentStatus.Canceled;
+        //Status = AppointmentStatus.Canceled;
         ModifiedAt = DateTime.UtcNow;
     }
 }

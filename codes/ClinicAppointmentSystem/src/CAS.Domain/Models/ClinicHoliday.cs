@@ -19,5 +19,3 @@ public class ClinicHoliday
         Description = description;
     }
 }
-
-}
