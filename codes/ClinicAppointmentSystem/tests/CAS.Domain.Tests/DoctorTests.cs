@@ -22,12 +22,10 @@ public class DoctorTests
         const string nationalCode = "3001011017";
         const string medicalCouncilNumber = "123456";
         Gender gender = Gender.Female;
-        var contactInfo = new ContactInfo()
-        {
-            Address = "somewhere",
-            MobileNumber = "0912134567",
-            PhoneNumber = "02183333"
-        };
+        var contactInfo = new ContactInfo(
+            phoneNumber: "02183333",
+            mobileNumber: "0912134567",
+            address: "somewhere");
 
         var doc =
             _builder.WithName(name)

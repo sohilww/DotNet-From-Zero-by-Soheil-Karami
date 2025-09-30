@@ -28,12 +28,11 @@ namespace CAS.Application
                 expertise: dto.Speciality,
                 nationalityCode: dto.NationalCode,
                 medicalCouncilNumber: dto.MedicalCouncilNumber,
-                gender: (Gender)dto.Gender,new ContactInfo()
-                {
-                    Address = dto.ContactInfoDto.Address,
-                    MobileNumber = dto.ContactInfoDto.MobileNumber,
-                    PhoneNumber = dto.ContactInfoDto.PhoneNumber
-                });
+                gender: (Gender)dto.Gender,
+                new ContactInfo(
+                    dto.ContactInfoDto.PhoneNumber,
+                    dto.ContactInfoDto.MobileNumber,
+                    dto.ContactInfoDto.Address));
 
             await _doctorRepository.Create(doctor, cancellationToken);
 

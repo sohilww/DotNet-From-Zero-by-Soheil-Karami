@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Domain;
 
 namespace CAS.Domain;
 
-public class AppointmentPeriod
+public class AppointmentPeriod : Entity<AppointmentPeriodId>
 {
-    public Guid PeriodId { get; private set; }
-    public Guid ScheduleId { get; private set; }
+    public ScheduleId ScheduleId { get; private set; }
     public TimeSpan StartTime { get; private set; }
     public TimeSpan EndTime { get; private set; }
 
-    public AppointmentPeriod(Guid periodId, Guid scheduleId, TimeSpan startTime, TimeSpan endTime)
+    public AppointmentPeriod(AppointmentPeriodId id, ScheduleId scheduleId, TimeSpan startTime, TimeSpan endTime)
+        : base(id)
     {
-        PeriodId = periodId;
-        ScheduleId = scheduleId;
+        ScheduleId = scheduleId ?? throw new ArgumentNullException(nameof(scheduleId));
         StartTime = startTime;
         EndTime = endTime;
     }
-
 }

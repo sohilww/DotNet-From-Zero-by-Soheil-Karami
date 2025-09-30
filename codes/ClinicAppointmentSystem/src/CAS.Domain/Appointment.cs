@@ -1,43 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Domain;
 
 namespace CAS.Domain;
 
-public class Appointment
+public class Appointment : AggregateRoot<AppointmentId>
 {
-    public Guid Id { get; private set; }
-    public Guid DoctorId { get; private set; }
-    public Guid PatientId { get; private set; }
+    public DoctorId DoctorId { get; private set; }
+    public PatientId PatientId { get; private set; }
     public DateTime Date { get; private set; }
-    public Guid PeriodId { get; private set; }
-    //public AppointmentStatus Status { get; private set; }
-    public DateTime CreatedAt { get; private set; }
-    public DateTime ModifiedAt { get; private set; }
+    public AppointmentPeriodId PeriodId { get; private set; }
+    public AppointmentStatus Status { get; private set; }
 
-    public Appointment(Guid id, Guid doctorId, Guid patientId, DateTime date, Guid periodId)
+    public Appointment(AppointmentId id, DoctorId doctorId, PatientId patientId, DateTime date, AppointmentPeriodId periodId)
+        : base(id)
     {
-        Id = id;
-        DoctorId = doctorId;
-        PatientId = patientId;
+        DoctorId = doctorId ?? throw new ArgumentNullException(nameof(doctorId));
+        PatientId = patientId ?? throw new ArgumentNullException(nameof(patientId));
         Date = date;
-        PeriodId = periodId;
-        //Status = AppointmentStatus.Reserved;
-        CreatedAt = DateTime.UtcNow;
-        ModifiedAt = DateTime.UtcNow;
+        PeriodId = periodId ?? throw new ArgumentNullException(nameof(periodId));
+        Status = AppointmentStatus.Reserved;
     }
 
     public void Confirm()
     {
-        //Status = AppointmentStatus.Confirmed;
-        ModifiedAt = DateTime.UtcNow;
+        Status = AppointmentStatus.Confirmed;
     }
 
     public void Cancel()
     {
-        //Status = AppointmentStatus.Canceled;
-        ModifiedAt = DateTime.UtcNow;
+        Status = AppointmentStatus.Canceled;
     }
 }

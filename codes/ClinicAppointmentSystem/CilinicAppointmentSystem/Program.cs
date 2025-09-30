@@ -26,6 +26,19 @@ public class Program
         builder.Services.AddScoped<IDoctorService, DoctorService>();
         builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
+        builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+        builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+
+        builder.Services.AddScoped<IPatientService, PatientService>();
+        builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+
+        builder.Services.AddScoped<IScheduleService, ScheduleService>();
+        builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
+
+        builder.Services.AddScoped<IClinicHolidayRepository, ClinicHolidayRepository>();
+        builder.Services.AddScoped<IDoctorVacationRepository, DoctorVacationRepository>();
+        builder.Services.AddScoped<IDoctorActiveDaysRepository, DoctorActiveDaysRepository>();
+
         
         var app = builder.Build();
 

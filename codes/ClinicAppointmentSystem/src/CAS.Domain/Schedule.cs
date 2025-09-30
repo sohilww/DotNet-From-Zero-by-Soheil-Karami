@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Domain;
 
-namespace CAS.Domain.Models;
-public class Schedule
+namespace CAS.Domain;
+public class Schedule : AggregateRoot<ScheduleId>
 {
-    public Guid Id { get; private set; }
-    public Guid DoctorId { get; private set; }
+    public DoctorId DoctorId { get; private set; }
     public DayOfWeek DayOfWeek { get; private set; }
     public TimeSpan StartTime { get; private set; }
     public TimeSpan EndTime { get; private set; }
@@ -16,10 +11,10 @@ public class Schedule
     public bool Enable { get; private set; } = true;
     public List<AppointmentPeriod> Periods { get; private set; } = new();
 
-    public Schedule(Guid id, Guid doctorId, DayOfWeek dayOfWeek, TimeSpan startTime, TimeSpan endTime, int duration)
+    public Schedule(ScheduleId id, DoctorId doctorId, DayOfWeek dayOfWeek, TimeSpan startTime, TimeSpan endTime, int duration)
+        : base(id)
     {
-        Id = id;
-        DoctorId = doctorId;
+        DoctorId = doctorId ?? throw new ArgumentNullException(nameof(doctorId));
         DayOfWeek = dayOfWeek;
         StartTime = startTime;
         EndTime = endTime;
@@ -28,6 +23,20 @@ public class Schedule
 
     public void GeneratePeriods()
     {
+        if (Duration <= 0)
+            throw new ArgumentOutOfRangeException(nameof(Duration));
+
+        Periods.Clear();
+
+        var currentStart = StartTime;
+        var slotLength = TimeSpan.FromMinutes(Duration);
+
+        while (currentStart + slotLength <= EndTime)
+        {
+            var currentEnd = currentStart + slotLength;
+            Periods.Add(new AppointmentPeriod(AppointmentPeriodId.Generate(), Id, currentStart, currentEnd));
+            currentStart = currentEnd;
+        }
     }
 
     public void Disable() => Enable = false;

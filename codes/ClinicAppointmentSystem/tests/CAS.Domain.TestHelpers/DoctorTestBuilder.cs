@@ -49,12 +49,10 @@ public class DoctorTestBuilder
     {
         const string medicalCouncilNumber = "123456";
         Gender gender = Gender.Female;
-        var contactInfo = new ContactInfo()
-        {
-            Address = "somewhere",
-            MobileNumber = "0912134567",
-            PhoneNumber = "02183333"
-        };
+        var contactInfo = new ContactInfo(
+            phoneNumber: "02183333",
+            mobileNumber: "0912134567",
+            address: "somewhere");
         
          return new Doctor(_id, _name, _lastname,
             _speciality, _nationalityCode,

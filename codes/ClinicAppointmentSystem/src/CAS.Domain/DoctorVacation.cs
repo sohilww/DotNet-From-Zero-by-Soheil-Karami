@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Domain;
 
-namespace CAS.Domain.Models;
-public class DoctorVacation
+namespace CAS.Domain;
+public class DoctorVacation : Entity<DoctorVacationId>
 {
-    public Guid Id { get; private set; }
-    public Guid DoctorId { get; private set; }
+    public DoctorId DoctorId { get; private set; }
     public DateTime StartDate { get; private set; }
     public DateTime EndDate { get; private set; }
     public string? Reason { get; private set; }
 
-    public DoctorVacation(Guid id, Guid doctorId, DateTime start, DateTime end, string? reason = null)
+    public DoctorVacation(DoctorVacationId id, DoctorId doctorId, DateTime start, DateTime end, string? reason = null)
+        : base(id)
     {
-        Id = id;
-        DoctorId = doctorId;
+        DoctorId = doctorId ?? throw new ArgumentNullException(nameof(doctorId));
         StartDate = start;
         EndDate = end;
         Reason = reason;

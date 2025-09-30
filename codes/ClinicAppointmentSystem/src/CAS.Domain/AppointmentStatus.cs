@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CAS.Domain;
+
 public enum AppointmentStatus
 {
     Reserved,

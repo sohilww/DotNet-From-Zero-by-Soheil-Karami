@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Domain;
 
 namespace CAS.Domain;
 
-public class ClinicHoliday
+public class ClinicHoliday : Entity<ClinicHolidayId>
 {
-    public Guid Id { get; private set; }
     public DateTime Date { get; private set; }
     public string Description { get; private set; }
 
-    public ClinicHoliday(Guid id, DateTime date, string description)
+    public ClinicHoliday(ClinicHolidayId id, DateTime date, string description)
+        : base(id)
     {
-        Id = id;
         Date = date;
         Description = description;
     }

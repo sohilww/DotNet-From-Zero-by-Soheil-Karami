@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Domain;
 
-namespace CAS.Domain.Models;
+namespace CAS.Domain;
 
 //بازه های زمانی فعال هر دکتر برای رزرو در سیستم
-public class DoctorActiveDays
+public class DoctorActiveDays : Entity<DoctorActiveDaysId>
 {
-    public Guid Id { get; private set; }
-    public Guid DoctorId { get; private set; }
+    public DoctorId DoctorId { get; private set; }
     public DateTime ActivityStartDate { get; private set; }
     public DateTime ActivityEndDate { get; private set; }
 
-    public DoctorActiveDays(Guid id, Guid doctorId, DateTime start, DateTime end)
+    public DoctorActiveDays(DoctorActiveDaysId id, DoctorId doctorId, DateTime start, DateTime end)
+        : base(id)
     {
-        Id = id;
-        DoctorId = doctorId;
+        DoctorId = doctorId ?? throw new ArgumentNullException(nameof(doctorId));
         ActivityStartDate = start;
         ActivityEndDate = end;
     }

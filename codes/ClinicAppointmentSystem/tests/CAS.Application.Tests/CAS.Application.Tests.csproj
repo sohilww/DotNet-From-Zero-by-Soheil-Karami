@@ -15,6 +15,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\CAS.Application\CAS.Application.csproj" />
+      <ProjectReference Include="..\..\src\CAS.Infrastructure.InMemoryDatabase\CAS.Infrastructure.InMemoryDatabase.csproj" />
+      <ProjectReference Include="..\..\src\CAS.Domain\CAS.Domain.csproj" />
     </ItemGroup>
 
 </Project>
