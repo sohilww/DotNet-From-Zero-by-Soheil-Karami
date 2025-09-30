@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAS.Domain.Models;
+namespace CAS.Domain;
 public class Patient
 {
     public Guid Id { get; private set; }
