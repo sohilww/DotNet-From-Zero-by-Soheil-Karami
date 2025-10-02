@@ -39,5 +39,10 @@ namespace CAS.Application
 
             return doctor.Id.DbId;
         }
+
+        public async Task<Guid> CreateSchedule(CreateScheduleDto dto, CancellationToken cancellationToken)
+        {
+            return Guid.Empty;
+        }
     }
 }

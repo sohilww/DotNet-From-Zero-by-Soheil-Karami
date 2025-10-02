@@ -16,7 +16,7 @@ namespace CilinicAppointmentSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateDoctor(CreateDoctorModel createDoctor,
+        public async Task<ActionResult<Guid>> CreateDoctor(CreateDoctorModel createDoctor,
             CancellationToken cancellationToken)
         {
             var dto = createDoctor.MapToDto();
@@ -25,8 +25,25 @@ namespace CilinicAppointmentSystem.Controllers
             return CreatedAtAction(nameof(GetById), new { id = id }, dto);
         }
 
+        [HttpPost]
+        [Route("{id:guid}/Schedules")]
+        public async Task<ActionResult<object>> CreateSchedule(Guid id,CreateScheduleModel createSchedule,CancellationToken cancellationToken)
+        {
+            var dto = createSchedule.MapToDto(id);
+            var scheduleId = await _doctorService.CreateSchedule(dto,cancellationToken);
+            return CreatedAtAction(nameof(GetScheduleById), new { id = scheduleId }, dto);
+        }
+
         [HttpGet]
-        public async Task<ActionResult> GetById(string id, CancellationToken cancellationToken)
+        public async Task<ActionResult> GetById(Guid id, CancellationToken cancellationToken)
+        {
+            return Ok();
+        }
+        
+        //Doctors/doctorId/schedules/scheduleId
+        [HttpGet]
+        [Route("{id:guid}/Schedules/{scheduleId:guid}")]
+        public async Task<ActionResult> GetScheduleById(Guid id, CancellationToken cancellationToken)
         {
             return Ok();
         }
