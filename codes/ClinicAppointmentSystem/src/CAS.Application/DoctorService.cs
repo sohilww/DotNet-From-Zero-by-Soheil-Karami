@@ -28,7 +28,7 @@ namespace CAS.Application
                 expertise: dto.Speciality,
                 nationalityCode: dto.NationalCode,
                 medicalCouncilNumber: dto.MedicalCouncilNumber,
-                gender: (Gender)dto.Gender,new ContactInfo()
+                gender: (Gender)dto.Gender, new ContactInfo()
                 {
                     Address = dto.ContactInfoDto.Address,
                     MobileNumber = dto.ContactInfoDto.MobileNumber,
@@ -42,7 +42,17 @@ namespace CAS.Application
 
         public async Task<Guid> CreateSchedule(CreateScheduleDto dto, CancellationToken cancellationToken)
         {
+            //one level of abstraction
+            await GuardAgainstInvalidDoctorId(dto.DoctorId, cancellationToken);
+            
+            
             return Guid.Empty;
+        }
+
+        private async Task GuardAgainstInvalidDoctorId(Guid doctorId, CancellationToken cancellationToken)
+        {
+            if (!await _doctorRepository.AlreadyExists(doctorId, cancellationToken))
+                throw new KeyNotFoundException();
         }
     }
 }

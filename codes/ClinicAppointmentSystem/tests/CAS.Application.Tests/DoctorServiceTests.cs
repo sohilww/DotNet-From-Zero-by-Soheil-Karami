@@ -24,7 +24,7 @@ public class DoctorServiceTests
         //Arrange,Act,Assert , Triple A
         var id = await _doctorService.Create(new CreateDoctorDto()
         {
-            NationalCode="5210010104",
+            NationalCode = "5210010104",
             LastName = "Yousefi",
             Name = "Samaneh",
             Speciality = "Genral",
@@ -55,18 +55,45 @@ public class DoctorServiceTests
         var repository = Substitute.For<IDoctorRepository>();
         repository.AlreadyExists(Arg.Any<string>(), Arg.Any<CancellationToken>())
             .Returns(true);
-        
-        var service=new DoctorService(repository);
-        
-        Func<Task> act = async () => { await service.Create(new CreateDoctorDto()
+
+        var service = new DoctorService(repository);
+
+        Func<Task> act = async () =>
         {
-            NationalCode="5210010104",
-            LastName = "Yousefi",
-            Name = "Samaneh",
-            Speciality = "Genral"
-        }, CancellationToken.None); };
+            await service.Create(new CreateDoctorDto()
+            {
+                NationalCode = "5210010104",
+                LastName = "Yousefi",
+                Name = "Samaneh",
+                Speciality = "Genral"
+            }, CancellationToken.None);
+        };
 
         await act.Should().ThrowAsync<ArgumentOutOfRangeException>();
+    }
+
+    [Fact]
+    public async Task should_throw_an_exception_when_could_not_find_a_doctor()
+    {
+        var service = new DoctorService(CreateRepositoryThatSaysDoctorHasNotCreatedYet());
+
+        var act = async () =>
+        {
+            await service.CreateSchedule(new CreateScheduleDto()
+            {
+                DoctorId = Guid.NewGuid(),
+            }, CancellationToken.None);
+        };
+
+        await act.Should().ThrowAsync<KeyNotFoundException>();
+    }
+
+    private IDoctorRepository CreateRepositoryThatSaysDoctorHasNotCreatedYet()
+    {
+        var repository = Substitute.For<IDoctorRepository>();
+        repository.AlreadyExists(Arg.Any<Guid>(), Arg.Any<CancellationToken>())
+            .Returns(false);
+        return repository;
     }
 }
 
@@ -80,5 +107,10 @@ public class DoctorRepositoryStub : IDoctorRepository
     public Task<bool> AlreadyExists(string nationalCode, CancellationToken cancellationToken)
     {
         return Task.FromResult(false);
+    }
+
+    public Task<bool> AlreadyExists(Guid doctorId, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(true);
     }
 }
