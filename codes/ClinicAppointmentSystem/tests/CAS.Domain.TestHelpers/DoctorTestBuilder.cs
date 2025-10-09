@@ -1,4 +1,6 @@
-﻿namespace CAS.Domain.TestHelpers;
+﻿using CAS.Domain.DoctorAggregate;
+
+namespace CAS.Domain.TestHelpers;
 
 public class DoctorTestBuilder
 {
@@ -7,6 +9,7 @@ public class DoctorTestBuilder
     private string _lastname;
     private string _speciality;
     private string _nationalityCode;
+    private Schedule _schedule;
 
     public DoctorTestBuilder()
     {
@@ -14,6 +17,32 @@ public class DoctorTestBuilder
         _lastname = "Yousefi";
         _speciality = "general";
         _nationalityCode = "3001011017";
+        _schedule = CreateSchedule();
+    }
+    private Schedule CreateSchedule()
+    {
+        return new Schedule()
+        {
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddMonths(1),
+            SessionDuration = 30,
+            RestDuration = 10,
+            DaySchedules = new List<DaySchedule>()
+            {
+                new DaySchedule()
+                {
+                    WorkDay = DayOfWeek.Saturday,
+                    Hours = new List<WorkingHours>()
+                    {
+                        new WorkingHours()
+                        {
+                            StartTime = TimeSpan.Parse("09:00"),
+                            EndTime = TimeSpan.Parse("14:00"),
+                        }
+                    }
+                }
+            }
+        };
     }
     public DoctorTestBuilder WithId(Guid id)
     {
@@ -45,6 +74,12 @@ public class DoctorTestBuilder
         _nationalityCode = nationalityCode;
         return this;
     }
+    public DoctorTestBuilder WithSchedule(Schedule schedule)
+    {
+        _schedule = schedule;
+        return this;
+
+    }
     public Doctor Build()
     {
         const string medicalCouncilNumber = "123456";
@@ -56,9 +91,13 @@ public class DoctorTestBuilder
             PhoneNumber = "02183333"
         };
         
-         return new Doctor(_id, _name, _lastname,
+         var doctor= new Doctor(_id, _name, _lastname,
             _speciality, _nationalityCode,
             medicalCouncilNumber, gender, contactInfo);
+         
+         doctor.CreateSchedule(_schedule);
+         
+         return doctor;
     }
 
 

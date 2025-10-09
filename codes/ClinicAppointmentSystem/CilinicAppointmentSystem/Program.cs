@@ -1,6 +1,6 @@
 using CAS.Application;
 using CAS.Application.Contract;
-using CAS.Domain.Repositories;
+using CAS.Domain.DoctorAggregate.Repositories;
 using CAS.Infrastructure.InMemoryDatabase;
 using Newtonsoft.Json.Converters;
 

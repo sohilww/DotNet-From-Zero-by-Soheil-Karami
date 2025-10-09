@@ -1,3 +1,4 @@
+using CAS.Domain.DoctorAggregate;
 using CAS.Domain.TestHelpers;
 using FluentAssertions;
 
@@ -74,19 +75,125 @@ public class DoctorTests
     [InlineData("00132434")]
     public void should_throw_exception_when_nationalCode_is_wrong(string wrongNationalCode)
     {
-       Action act = () => _builder.WithNationalCode(wrongNationalCode).Build();
+        Action act = () => _builder.WithNationalCode(wrongNationalCode).Build();
 
         act.Should().Throw<ArgumentException>();
     }
+
     [Fact]
     public void doctor_with_same_id_should_be_equal()
     {
-        var id=DoctorId.Generate();
+        var id = DoctorId.Generate();
         var firstDoctor = _builder.WithId(id).WithName("FirstDoctor").Build();
         var secondDoctor = _builder.WithId(id).WithName("SecondDoctor").Build();
-        
+
         firstDoctor.Should().Be(secondDoctor);
+    }
+
+    [Fact]
+    public void create_a_schedule_for_a_doctor()
+    {
+        var doctor = new DoctorTestBuilder().Build();
+        var schedule = new Schedule();
+
+        doctor.CreateSchedule(schedule);
+
+        doctor.Schedules.Count.Should().BeGreaterThan(0);
+    }
+
+    [Fact]
+    public void should_throw_an_exception_when_schedule_already_exists()
+    {
+        var startDate=DateTime.Now;
+        var endDate=startDate.AddDays(30);
+        
+        var doctor = CreateADoctorWithSchedule(startDate, endDate);
+
+        var alradyCreatedSchedule = CreateSchedule(startDate, endDate);
+        
+       Action act= ()=>doctor.CreateSchedule(alradyCreatedSchedule);
+       
+       act.Should().Throw<ArgumentException>();
         
     }
+
+    [Fact]
+    public void should_generate_slots_for_specific_schedule()
+    {
+        var startDate=DateTime.Now;
+        var endDate=startDate.AddDays(1);
+        
+        var schedule =  new Schedule()
+        {
+            StartDate = startDate,
+            EndDate = endDate,
+            SessionDuration = 1,
+            RestDuration = 0,
+            DaySchedules = new List<DaySchedule>()
+            {
+                new DaySchedule()
+                {
+                    WorkDay = DayOfWeek.Saturday,
+                    Hours = new List<WorkingHours>()
+                    {
+                        new WorkingHours()
+                        {
+                            StartTime = TimeSpan.Parse("10:00"),
+                            EndTime = TimeSpan.Parse("12:00"),
+                        }
+                    }
+                }
+            }
+        };
+        //10:00 => 11:00 , 11:00 => 12:00
+        var doctor=CreateADoctorWithSchedule(schedule);
+
+        //
+        
+        var slots = doctor.GenerateSlots(startDate, endDate);
+        
+        slots.Count.Should().Be(2);
+       slots.First().StartDateTime.Should().Be(DateTime.Parse("2025-10-09 10:00:00"));
+    }
+
+    private Doctor CreateADoctorWithSchedule(DateTime startDate, DateTime endDate)
+    {
+        var firstSchedule = CreateSchedule(startDate, endDate);
+       return CreateADoctorWithSchedule(firstSchedule);
+    }
     
+    private Doctor CreateADoctorWithSchedule(Schedule schedule)
+    {
+        var doctor = new DoctorTestBuilder()
+            .WithSchedule(schedule)
+            .Build();
+        return doctor;
+    }
+
+    private Schedule CreateSchedule(DateTime startDate, DateTime endDate)
+    {
+        //todo: homework => write a factory for creating a schedule
+        return new Schedule()
+        {
+            StartDate = startDate,
+            EndDate = endDate,
+            SessionDuration = 30,
+            RestDuration = 10,
+            DaySchedules = new List<DaySchedule>()
+            {
+                new DaySchedule()
+                {
+                    WorkDay = DayOfWeek.Saturday,
+                    Hours = new List<WorkingHours>()
+                    {
+                        new WorkingHours()
+                        {
+                            StartTime = TimeSpan.Parse("09:00"),
+                            EndTime = TimeSpan.Parse("14:00"),
+                        }
+                    }
+                }
+            }
+        };
+    }
 }

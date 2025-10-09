@@ -5,8 +5,8 @@ namespace CilinicAppointmentSystem.Models;
 
 public class CreateScheduleModel
 {
-    public DateOnly StartDate { get; set; }
-    public DateOnly EndDate { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
     public int SessionDuration { get; set; }
     public int RestDuration { get; set; }
     public List<DayScheduleModel> DaySchedules { get; set; }

@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\CAS.Application\CAS.Application.csproj" />
+      <ProjectReference Include="..\CAS.Domain.TestHelpers\CAS.Domain.TestHelpers.csproj" />
     </ItemGroup>
 
 </Project>

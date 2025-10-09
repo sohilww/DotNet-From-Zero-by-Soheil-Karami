@@ -1,6 +1,6 @@
 using Framework.Domain;
 
-namespace CAS.Domain;
+namespace CAS.Domain.DoctorAggregate;
 
 public class ContactInfo : ValueObject
 {

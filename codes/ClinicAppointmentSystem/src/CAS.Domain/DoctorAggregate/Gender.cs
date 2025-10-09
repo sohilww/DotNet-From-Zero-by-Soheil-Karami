@@ -1,4 +1,4 @@
-namespace CAS.Domain;
+namespace CAS.Domain.DoctorAggregate;
 
 public enum Gender 
 {

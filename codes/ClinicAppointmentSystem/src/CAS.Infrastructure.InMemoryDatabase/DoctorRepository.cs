@@ -1,5 +1,6 @@
 ﻿using CAS.Domain;
-using CAS.Domain.Repositories;
+using CAS.Domain.DoctorAggregate;
+using CAS.Domain.DoctorAggregate.Repositories;
 
 namespace CAS.Infrastructure.InMemoryDatabase;
 
@@ -22,5 +23,10 @@ public class DoctorRepository : IDoctorRepository
     public async Task<bool> AlreadyExists(Guid doctorId, CancellationToken cancellationToken)
     {
         return _doctorsList.Any(a=>Equals(a.Id, DoctorId.Generate(doctorId)));
+    }
+
+    public Task<Doctor> GetById(Guid doctorId, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(_doctorsList.FirstOrDefault(doctor => Equals(doctor.Id, doctorId)));
     }
 }

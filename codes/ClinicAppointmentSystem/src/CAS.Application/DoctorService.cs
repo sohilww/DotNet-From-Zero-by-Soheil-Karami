@@ -1,6 +1,8 @@
-﻿using CAS.Application.Contract;
+﻿using System.Xml;
+using CAS.Application.Contract;
 using CAS.Domain;
-using CAS.Domain.Repositories;
+using CAS.Domain.DoctorAggregate;
+using CAS.Domain.DoctorAggregate.Repositories;
 
 namespace CAS.Application
 {
@@ -44,6 +46,27 @@ namespace CAS.Application
         {
             //one level of abstraction
             await GuardAgainstInvalidDoctorId(dto.DoctorId, cancellationToken);
+            
+            var doctor=await _doctorRepository.GetById(dto.DoctorId, cancellationToken);
+            
+            var schedule = new Schedule()
+            {
+                StartDate = dto.StartDate,
+                EndDate = dto.EndDate,
+                SessionDuration = dto.SessionDuration,
+                RestDuration = dto.RestDuration,
+                DaySchedules = dto.DaySchedules.Select(a=>new DaySchedule()
+                {
+                    WorkDay = a.WorkDay,
+                    Hours = a.Hours.Select(h=>new WorkingHours()
+                    {
+                        StartTime = h.StartTime,
+                        EndTime = h.EndTime,
+                    }).ToList()
+                }).ToList(),
+            };
+            
+            doctor.CreateSchedule(schedule);
             
             
             return Guid.Empty;
