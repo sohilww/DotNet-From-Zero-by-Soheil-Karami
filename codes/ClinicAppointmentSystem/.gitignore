@@ -51,3 +51,8 @@ nCrunchTemp*
 
 *.pubxml
 /nuget.config
+/.idea
+/DotnetFromZero/.idea/.gitignore
+/DotnetFromZero/.idea/encodings.xml
+/DotnetFromZero/.idea/indexLayout.xml
+/DotnetFromZero/.idea/vcs.xml

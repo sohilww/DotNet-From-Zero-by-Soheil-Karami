@@ -9,8 +9,6 @@ namespace CAS.Application.Contract
     public interface IDoctorService
     {
         public Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken);
-        Task AddSchedule(string nationalCode, AddScheduleDto dto, CancellationToken cancellationToken);
-        Task<GetDoctorDto> GetByNationalCode(string nationalCode, CancellationToken cancellationToken);
-
+        public Task<Guid> CreateSchedule(CreateScheduleDto dto, CancellationToken cancellationToken);
     }
 }

@@ -1,6 +1,8 @@
-﻿using CAS.Application.Contract;
+﻿using System.Xml;
+using CAS.Application.Contract;
 using CAS.Domain;
-using CAS.Domain.Repositories;
+using CAS.Domain.DoctorAggregate;
+using CAS.Domain.DoctorAggregate.Repositories;
 
 namespace CAS.Application
 {
@@ -8,66 +10,72 @@ namespace CAS.Application
     {
         private readonly IDoctorRepository _doctorRepository;
 
-        public DoctorService(IDoctorRepository  doctorRepository)
+        public DoctorService(IDoctorRepository doctorRepository)
         {
-            _doctorRepository = doctorRepository; 
+            _doctorRepository = doctorRepository; // => doc => depend on component
         }
 
-        public async Task AddSchedule(string nationalCode, AddScheduleDto dto, CancellationToken cancellationToken)
-        {
-            if (dto is null) throw new ArgumentNullException(nameof(dto));
-
-            var doctor = await _doctorRepository.GetByNationalCode(nationalCode, cancellationToken);
-
-            if (doctor is null)
-                throw new InvalidOperationException($"Doctor with nationalCode {nationalCode} not found");
-
-            doctor.AddSchedule(new(dto.DayOfWeek, dto.StartTime, dto.EndTime));
-        }
-
-
-        public async  Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken)
+        public async Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-            if (await _doctorRepository.AlreadyExists(dto.NationalCode,cancellationToken))
+            if (await _doctorRepository.AlreadyExists(dto.NationalCode, cancellationToken))
                 throw new ArgumentOutOfRangeException();
-            
-            
-            var doctor = new Doctor(
-               name: dto.Name,
-               lastname: dto.LastName,
-               expertise: dto.Speciality,
-               nationalCode : dto.NationalCode
-           );
-            
+
+            var id = DoctorId.Generate();
+
+            var doctor = new Doctor(id,
+                name: dto.Name,
+                lastname: dto.LastName,
+                expertise: dto.Speciality,
+                nationalityCode: dto.NationalCode,
+                medicalCouncilNumber: dto.MedicalCouncilNumber,
+                gender: (Gender)dto.Gender, new ContactInfo()
+                {
+                    Address = dto.ContactInfoDto.Address,
+                    MobileNumber = dto.ContactInfoDto.MobileNumber,
+                    PhoneNumber = dto.ContactInfoDto.PhoneNumber
+                });
+
             await _doctorRepository.Create(doctor, cancellationToken);
 
-            return doctor.Id;
+            return doctor.Id.DbId;
         }
 
-        public async Task<CAS.Application.Contract.GetDoctorDto> GetByNationalCode(string nationalCode, CancellationToken cancellationToken)
+        public async Task<Guid> CreateSchedule(CreateScheduleDto dto, CancellationToken cancellationToken)
         {
-            var doctor = await _doctorRepository.GetByNationalCode(nationalCode, cancellationToken);
-            if (doctor is null)
-                throw new InvalidOperationException($"Doctor with codeMeli {nationalCode} not found");
-
-         
-            return new CAS.Application.Contract.GetDoctorDto
+            //one level of abstraction
+            await GuardAgainstInvalidDoctorId(dto.DoctorId, cancellationToken);
+            
+            var doctor=await _doctorRepository.GetById(dto.DoctorId, cancellationToken);
+            
+            var schedule = new Schedule()
             {
-                Name = doctor.Name,
-                LastName = doctor.Lastname,
-                Speciality = doctor.Expertise,
-                NationalCode = doctor.NationalCode,
-                Schedules = doctor.Schedules.Select(s => new CAS.Application.Contract.ScheduleDto
+                StartDate = dto.StartDate,
+                EndDate = dto.EndDate,
+                SessionDuration = dto.SessionDuration,
+                RestDuration = dto.RestDuration,
+                DaySchedules = dto.DaySchedules.Select(a=>new DaySchedule()
                 {
-                    DayOfWeek = s.DayOfWeek,
-                    StartTime = s.TimeRange.StartTime,
-                    EndTime = s.TimeRange.EndTime
-                }).ToList()
+                    WorkDay = a.WorkDay,
+                    Hours = a.Hours.Select(h=>new WorkingHours()
+                    {
+                        StartTime = h.StartTime,
+                        EndTime = h.EndTime,
+                    }).ToList()
+                }).ToList(),
             };
-
+            
+            doctor.CreateSchedule(schedule);
+            
+            
+            return Guid.Empty;
         }
- 
+
+        private async Task GuardAgainstInvalidDoctorId(Guid doctorId, CancellationToken cancellationToken)
+        {
+            if (!await _doctorRepository.AlreadyExists(doctorId, cancellationToken))
+                throw new KeyNotFoundException();
+        }
     }
 }

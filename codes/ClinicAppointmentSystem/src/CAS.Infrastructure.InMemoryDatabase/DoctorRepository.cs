@@ -1,14 +1,17 @@
 ﻿using CAS.Domain;
-using CAS.Domain.Repositories;
+using CAS.Domain.DoctorAggregate;
+using CAS.Domain.DoctorAggregate.Repositories;
 
 namespace CAS.Infrastructure.InMemoryDatabase;
 
 public class DoctorRepository : IDoctorRepository
 {   
     static Dictionary<string, Doctor> _doctors = new Dictionary<string, Doctor>();  
-    public async Task<Guid> Create(Doctor doctor, CancellationToken cancellationToken)
+    static List<Doctor> _doctorsList = new List<Doctor>();
+    public async Task<DoctorId> Create(Doctor doctor, CancellationToken cancellationToken)
     {
-        _doctors.Add(doctor.NationalCode, doctor);
+        _doctors.Add(doctor.NationalityCode, doctor);
+        _doctorsList.Add(doctor);
         return doctor.Id;
     }
 
@@ -17,9 +20,13 @@ public class DoctorRepository : IDoctorRepository
         return _doctors.ContainsKey(nationalCode);
     }
 
-    public async Task<Doctor> GetByNationalCode(string nationalCode, CancellationToken cancellationToken)
+    public async Task<bool> AlreadyExists(Guid doctorId, CancellationToken cancellationToken)
     {
-        return _doctors.GetValueOrDefault(nationalCode);
+        return _doctorsList.Any(a=>Equals(a.Id, DoctorId.Generate(doctorId)));
     }
 
+    public Task<Doctor> GetById(Guid doctorId, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(_doctorsList.FirstOrDefault(doctor => Equals(doctor.Id, doctorId)));
+    }
 }

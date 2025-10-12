@@ -16,42 +16,36 @@ namespace CilinicAppointmentSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateDoctor(CreateDoctorModel createDoctor,
+        public async Task<ActionResult<Guid>> CreateDoctor(CreateDoctorModel createDoctor,
             CancellationToken cancellationToken)
         {
             var dto = createDoctor.MapToDto();
-            var nationalCode = await _doctorService.Create(dto,cancellationToken);
+            var id = await _doctorService.Create(dto,cancellationToken);
 
-            return CreatedAtAction(nameof(GetByNationalCode), new { nationalCode }, dto);
-
-
+            return CreatedAtAction(nameof(GetById), new { id = id }, dto);
         }
 
-        [HttpGet("{nationalCode}")]
-        public async Task<ActionResult> GetByNationalCode(string nationalCode, CancellationToken cancellationToken)
+        [HttpPost]
+        [Route("{id:guid}/Schedules")]
+        public async Task<ActionResult<object>> CreateSchedule(Guid id,CreateScheduleModel createSchedule,CancellationToken cancellationToken)
         {
-
-            var doctor = await _doctorService.GetByNationalCode(nationalCode, cancellationToken);
-            return Ok(doctor);
+            var dto = createSchedule.MapToDto(id);
+            var scheduleId = await _doctorService.CreateSchedule(dto,cancellationToken);
+            return CreatedAtAction(nameof(GetScheduleById), new { id = scheduleId }, dto);
         }
 
-        [HttpPost("{nationalCode}/schedules")]
-        public async Task<IActionResult> AddSchedule(string nationalCode, [FromBody] AddScheduleModel addWorkSchedule, CancellationToken cancellationToken)
+        [HttpGet]
+        public async Task<ActionResult> GetById(Guid id, CancellationToken cancellationToken)
         {
-            try
-            {
-                await _doctorService.AddSchedule(nationalCode, addWorkSchedule.MapToDto(), cancellationToken);
-                return NoContent();
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (ArgumentNullException)
-            {
-                return BadRequest("Invalid schedule data");
-            }
+            return Ok();
         }
-
+        
+        //Doctors/doctorId/schedules/scheduleId
+        [HttpGet]
+        [Route("{id:guid}/Schedules/{scheduleId:guid}")]
+        public async Task<ActionResult> GetScheduleById(Guid id, CancellationToken cancellationToken)
+        {
+            return Ok();
+        }
     }
 }
