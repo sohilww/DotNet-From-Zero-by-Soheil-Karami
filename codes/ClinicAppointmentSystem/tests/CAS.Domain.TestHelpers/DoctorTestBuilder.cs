@@ -1,5 +1,4 @@
 ﻿using CAS.Domain.DoctorAggregate;
-using CAS.Domain.Tests;
 
 namespace CAS.Domain.TestHelpers;
 

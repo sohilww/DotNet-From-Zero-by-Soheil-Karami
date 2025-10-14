@@ -3,7 +3,6 @@ using CAS.Domain;
 using CAS.Domain.DoctorAggregate;
 using CAS.Domain.DoctorAggregate.Repositories;
 using CAS.Domain.TestHelpers;
-using CAS.Domain.Tests;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
