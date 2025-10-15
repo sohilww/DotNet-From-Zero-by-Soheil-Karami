@@ -152,28 +152,7 @@ public class DoctorServiceTests
 
     private Schedule CreateSchedule(DateTime startDate, DateTime endDate)
     {
-        return new Schedule()
-        {
-            StartDate = startDate,
-            EndDate = endDate,
-            SessionDuration = 30,
-            RestDuration = 10,
-            DaySchedules = new List<DaySchedule>()
-            {
-                new DaySchedule()
-                {
-                    WorkDay = DayOfWeek.Saturday,
-                    Hours = new List<WorkingHours>()
-                    {
-                        new WorkingHours()
-                        {
-                            StartTime = TimeSpan.Parse("09:00"),
-                            EndTime = TimeSpan.Parse("14:00"),
-                        }
-                    }
-                }
-            }
-        };
+        return ScheduleFactory.CreateDefault(startDate, endDate);
     }
 }
 

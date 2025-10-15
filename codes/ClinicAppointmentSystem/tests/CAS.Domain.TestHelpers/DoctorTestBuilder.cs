@@ -21,28 +21,7 @@ public class DoctorTestBuilder
     }
     private Schedule CreateSchedule()
     {
-        return new Schedule()
-        {
-            StartDate = DateTime.Now,
-            EndDate = DateTime.Now.AddMonths(1),
-            SessionDuration = 30,
-            RestDuration = 10,
-            DaySchedules = new List<DaySchedule>()
-            {
-                new DaySchedule()
-                {
-                    WorkDay = DayOfWeek.Saturday,
-                    Hours = new List<WorkingHours>()
-                    {
-                        new WorkingHours()
-                        {
-                            StartTime = TimeSpan.Parse("09:00"),
-                            EndTime = TimeSpan.Parse("14:00"),
-                        }
-                    }
-                }
-            }
-        };
+        return ScheduleFactory.CreateDefault(DateTime.Now, DateTime.Now.AddMonths(1));
     }
     public DoctorTestBuilder WithId(Guid id)
     {
