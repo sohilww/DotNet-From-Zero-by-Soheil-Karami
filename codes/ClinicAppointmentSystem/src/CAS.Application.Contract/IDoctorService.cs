@@ -10,5 +10,6 @@ namespace CAS.Application.Contract
     {
         public Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken);
         public Task<Guid> CreateSchedule(CreateScheduleDto dto, CancellationToken cancellationToken);
+        Task CreateSlots(Guid doctorId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken);
     }
 }

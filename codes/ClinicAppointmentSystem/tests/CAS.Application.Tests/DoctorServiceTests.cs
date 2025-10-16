@@ -2,6 +2,7 @@
 using CAS.Domain;
 using CAS.Domain.DoctorAggregate;
 using CAS.Domain.DoctorAggregate.Repositories;
+using CAS.Domain.SlotAggregate;
 using CAS.Domain.TestHelpers;
 using FluentAssertions;
 using NSubstitute;
@@ -12,11 +13,13 @@ namespace CAS.Application.Tests;
 public class DoctorServiceTests
 {
     private readonly DoctorService _doctorService;
+    private readonly SlotRepositoryStub _slotRepositoryDummy;
 
     public DoctorServiceTests()
     {
         var doctorRepositoryStub = new DoctorRepositoryStub();
-        _doctorService = new DoctorService(doctorRepositoryStub);
+        _slotRepositoryDummy = new SlotRepositoryStub();
+        _doctorService = new DoctorService(doctorRepositoryStub, _slotRepositoryDummy);
     }
 
     [Fact]
@@ -57,7 +60,7 @@ public class DoctorServiceTests
         repository.AlreadyExists(Arg.Any<string>(), Arg.Any<CancellationToken>())
             .Returns(true);
 
-        var service = new DoctorService(repository);
+        var service = new DoctorService(repository,_slotRepositoryDummy);
 
         Func<Task> act = async () =>
         {
@@ -76,7 +79,7 @@ public class DoctorServiceTests
     [Fact]
     public async Task should_throw_an_exception_when_could_not_find_a_doctor()
     {
-        var service = new DoctorService(CreateRepositoryThatSaysDoctorHasNotCreatedYet());
+        var service = new DoctorService(CreateRepositoryThatSaysDoctorHasNotCreatedYet(),_slotRepositoryDummy);
 
         var act = async () =>
         {
@@ -95,7 +98,8 @@ public class DoctorServiceTests
         var scheduleStartDate = DateTime.Now;
         var scheduleEndDate = scheduleStartDate.AddMonths(1);
 
-        var doctorService = new DoctorService(CreateRepositoryThatReturnsDoctorWithSchedule(scheduleStartDate, scheduleEndDate));
+        var doctorService = new DoctorService(
+            CreateRepositoryThatReturnsDoctorWithSchedule(scheduleStartDate, scheduleEndDate),_slotRepositoryDummy);
         var schedule = CreateScheduleDto(scheduleStartDate, scheduleEndDate);
 
         var act = async () => await doctorService.CreateSchedule(schedule, CancellationToken.None);
@@ -144,6 +148,9 @@ public class DoctorServiceTests
 
     private IDoctorRepository CreateRepositoryThatSaysDoctorHasNotCreatedYet()
     {
+        
+        
+        
         var repository = Substitute.For<IDoctorRepository>();
         repository.AlreadyExists(Arg.Any<Guid>(), Arg.Any<CancellationToken>())
             .Returns(false);
@@ -195,6 +202,13 @@ public class DoctorRepositoryStub : IDoctorRepository
     }
 
     public Task<Doctor> GetById(Guid doctorId, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+}
+public class SlotRepositoryStub : ISlotRepository
+{
+    public Task CreateSlots(IReadOnlyList<Slot> slots, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

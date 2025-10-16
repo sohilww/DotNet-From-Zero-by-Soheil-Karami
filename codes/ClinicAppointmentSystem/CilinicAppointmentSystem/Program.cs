@@ -25,6 +25,7 @@ public class Program
 
         builder.Services.AddScoped<IDoctorService, DoctorService>();
         builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+        builder.Services.AddScoped<ISlotRepository, SlotRepository>();
 
         
         var app = builder.Build();

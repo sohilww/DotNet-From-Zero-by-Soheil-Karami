@@ -1,4 +1,5 @@
-﻿using CAS.Domain.SlotAggregate;
+﻿using System.Runtime.InteropServices.JavaScript;
+using CAS.Domain.SlotAggregate;
 using Framework.Core;
 using Framework.Domain;
 
@@ -14,6 +15,8 @@ public class Doctor : AggregateRoot<DoctorId>
     public string MedicalCouncilNumber { get; private set; }
     public Gender Gender { get; private set; }
     public ContactInfo ContactInfo { get; private set; }
+
+   // public Slot Slot { get; set; } wrong
 
     public IReadOnlyList<Schedule> Schedules => _schedules.AsReadOnly();
 
@@ -58,10 +61,27 @@ public class Doctor : AggregateRoot<DoctorId>
     }
     
 
-    public List<Slot> GenerateSlots(DateTime startDate, DateTime endDate)
+    public IReadOnlyList<Slot> GenerateSlots(DateTime startDate, DateTime endDate)
     {
         var schedule=_schedules.FirstOrDefault(a=>a.StartDate==startDate &&a.EndDate==endDate);
+        
+        var slots = schedule.DaySchedules.SelectMany(
+                a=>GenerateDaySchedule(a, schedule))
+            .Select(CreateSlot(schedule))
+            .ToList().AsReadOnly();
 
-        return null;
+        return slots;
+    }
+
+    private List<DayScheduleForCalculatingSlot> GenerateDaySchedule(DaySchedule a, Schedule? schedule)
+    {
+        return a.Generate(schedule.SessionDuration,schedule.RestDuration);
+    }
+
+    private Func<DayScheduleForCalculatingSlot, Slot> CreateSlot(Schedule schedule)
+    {
+        return a=>
+            new Slot(SlotId.Generate(),schedule.StartDate.Date.Add(a.StartTime),
+                schedule.StartDate.Date.Add(a.EndTime), Id);
     }
 }

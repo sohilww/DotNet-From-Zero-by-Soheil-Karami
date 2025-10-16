@@ -7,7 +7,7 @@ public static class ScheduleFactoryTest
     public static Schedule Create(
         DateTime startDate,
         DateTime endDate,
-        int sessionDuration = 30,
+        int sessionDurationInMinutes = 30,
         int restDuration = 10,
         params (DayOfWeek WorkDay, string StartTime, string EndTime)[] workDays)
     {
@@ -24,7 +24,7 @@ public static class ScheduleFactoryTest
         {
             StartDate = startDate,
             EndDate = endDate,
-            SessionDuration = sessionDuration,
+            SessionDuration = sessionDurationInMinutes,
             RestDuration = restDuration,
             DaySchedules = daySchedules
         };

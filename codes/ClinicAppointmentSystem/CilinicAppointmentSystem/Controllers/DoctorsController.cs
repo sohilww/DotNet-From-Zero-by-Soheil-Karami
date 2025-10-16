@@ -47,5 +47,14 @@ namespace CilinicAppointmentSystem.Controllers
         {
             return Ok();
         }
+
+        [HttpPost]
+        [Route("{id:guid}/Schedules/{startDate:datetime}/{endDate:datetime}")]
+        public async Task<ActionResult> CreateSlots(Guid doctorId,DateTime startDate,DateTime endDate,
+            CancellationToken cancellationToken)
+        {
+            await _doctorService.CreateSlots(doctorId, startDate, endDate, cancellationToken);
+            return Ok();
+        }
     }
 }

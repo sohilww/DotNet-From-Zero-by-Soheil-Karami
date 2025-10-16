@@ -104,6 +104,9 @@ public class DoctorTests
     [Fact]
     public void should_throw_an_exception_when_schedule_already_exists()
     {
+        //state verfication
+        //behavior verification
+        
         var startDate=DateTime.Now;
         var endDate=startDate.AddDays(30);
         
@@ -120,25 +123,24 @@ public class DoctorTests
     [Fact]
     public void should_generate_slots_for_specific_schedule()
     {
-        var startDate=DateTime.Now;
-        var endDate=startDate.AddDays(1);
-        
-        var schedule = ScheduleFactory.Create(
+        var startDate = DateTime.Parse("2025-10-09");
+        var endDate = startDate.AddDays(1);
+
+        var schedule = ScheduleFactoryTest.Create(
             startDate,
             endDate,
-            sessionDuration: 1,   
-            restDuration: 0,       
+            sessionDurationInMinutes: 60,
+            restDuration: 0,
             (DayOfWeek.Saturday, "10:00", "12:00")
         );
-        //10:00 => 11:00 , 11:00 => 12:00
-        var doctor=CreateADoctorWithSchedule(schedule);
+        var doctor = CreateADoctorWithSchedule(schedule);
 
-        //
-        
+
         var slots = doctor.GenerateSlots(startDate, endDate);
-        
+
         slots.Count.Should().Be(2);
-       slots.First().StartDateTime.Should().Be(DateTime.Parse("2025-10-09 10:00:00"));
+        slots.First().StartDateTime.Should().Be(DateTime.Parse("2025-10-09 10:00:00"));
+        slots.First().EndDateTime.Should().Be(DateTime.Parse("2025-10-09 11:00:00"));
     }
 
     private Doctor CreateADoctorWithSchedule(DateTime startDate, DateTime endDate)
@@ -157,6 +159,6 @@ public class DoctorTests
 
     private Schedule CreateSchedule(DateTime startDate, DateTime endDate)
     {
-        return ScheduleFactory.Create(startDate, endDate);
+        return ScheduleFactoryTest.Create(startDate, endDate);
     }
 }

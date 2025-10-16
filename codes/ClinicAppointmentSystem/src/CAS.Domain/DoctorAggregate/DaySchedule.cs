@@ -7,7 +7,7 @@ public class DaySchedule
     public DayOfWeek WorkDay { get; set; }
     public List<WorkingHours> Hours { get; set; }
 
-    public List<DaySchedule2XXX> Generate(int sessionDuration, int restDuration)
+    public List<DayScheduleForCalculatingSlot> Generate(int sessionDuration, int restDuration)
     {
         //Saturday => 10:00 => 11:00
         //        //Saturday => 11:00 => 12:00
@@ -19,7 +19,7 @@ public class DaySchedule
         //        //Saturday => 17:00 => 18:00
         //        //Saturday => 18:00 => 19:00
         //        //Saturday => 19:00 => 20:00
-        var result = new List<DaySchedule2XXX>();
+        var result = new List<DayScheduleForCalculatingSlot>();
 
         foreach (var workingHours in Hours)
         {
@@ -28,7 +28,7 @@ public class DaySchedule
 
             while (startTime + TimeSpan.FromMinutes(sessionDuration) <= endTime)
             {
-                var session = new DaySchedule2XXX
+                var session = new DayScheduleForCalculatingSlot
                 {
                     WorkDay = WorkDay,
                     StartTime = startTime,
@@ -48,13 +48,6 @@ public class DaySchedule
 
 public class WorkingHours
 {
-    public TimeSpan StartTime { get; set; }
-    public TimeSpan EndTime { get; set; }
-}
-
-public class DaySchedule2XXX
-{
-    public DayOfWeek WorkDay { get; set; }
     public TimeSpan StartTime { get; set; }
     public TimeSpan EndTime { get; set; }
 }

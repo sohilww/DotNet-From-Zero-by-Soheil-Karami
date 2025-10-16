@@ -9,10 +9,12 @@ namespace CAS.Application
     public class DoctorService : IDoctorService
     {
         private readonly IDoctorRepository _doctorRepository;
-
-        public DoctorService(IDoctorRepository doctorRepository)
+        private readonly ISlotRepository _slotRepository;
+        
+        public DoctorService(IDoctorRepository doctorRepository, ISlotRepository slotRepository)
         {
             _doctorRepository = doctorRepository; // => doc => depend on component
+            _slotRepository = slotRepository;
         }
 
         public async Task<Guid> Create(CreateDoctorDto dto, CancellationToken cancellationToken)
@@ -70,6 +72,19 @@ namespace CAS.Application
             
             
             return Guid.Empty;
+        }
+
+        public async Task CreateSlots(Guid doctorId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
+        {
+            await GuardAgainstInvalidDoctorId(doctorId, cancellationToken);
+            var doctor=await _doctorRepository.GetById(doctorId, cancellationToken);
+            
+            var slots=doctor.GenerateSlots(startDate, endDate);
+            
+            await _slotRepository.CreateSlots(slots, cancellationToken);
+   
+            // doctor.Lastname = "sdfasdfa";
+            // _doctorRepository.Update(doctor); wrong
         }
 
         private async Task GuardAgainstInvalidDoctorId(Guid doctorId, CancellationToken cancellationToken)
