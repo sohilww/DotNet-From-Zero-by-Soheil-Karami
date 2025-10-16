@@ -123,28 +123,13 @@ public class DoctorTests
         var startDate=DateTime.Now;
         var endDate=startDate.AddDays(1);
         
-        var schedule =  new Schedule()
-        {
-            StartDate = startDate,
-            EndDate = endDate,
-            SessionDuration = 1,
-            RestDuration = 0,
-            DaySchedules = new List<DaySchedule>()
-            {
-                new DaySchedule()
-                {
-                    WorkDay = DayOfWeek.Saturday,
-                    Hours = new List<WorkingHours>()
-                    {
-                        new WorkingHours()
-                        {
-                            StartTime = TimeSpan.Parse("10:00"),
-                            EndTime = TimeSpan.Parse("12:00"),
-                        }
-                    }
-                }
-            }
-        };
+        var schedule = ScheduleFactory.Create(
+            startDate,
+            endDate,
+            sessionDuration: 1,   
+            restDuration: 0,       
+            (DayOfWeek.Saturday, "10:00", "12:00")
+        );
         //10:00 => 11:00 , 11:00 => 12:00
         var doctor=CreateADoctorWithSchedule(schedule);
 
@@ -172,28 +157,6 @@ public class DoctorTests
 
     private Schedule CreateSchedule(DateTime startDate, DateTime endDate)
     {
-        //todo: homework => write a factory for creating a schedule
-        return new Schedule()
-        {
-            StartDate = startDate,
-            EndDate = endDate,
-            SessionDuration = 30,
-            RestDuration = 10,
-            DaySchedules = new List<DaySchedule>()
-            {
-                new DaySchedule()
-                {
-                    WorkDay = DayOfWeek.Saturday,
-                    Hours = new List<WorkingHours>()
-                    {
-                        new WorkingHours()
-                        {
-                            StartTime = TimeSpan.Parse("09:00"),
-                            EndTime = TimeSpan.Parse("14:00"),
-                        }
-                    }
-                }
-            }
-        };
+        return ScheduleFactory.Create(startDate, endDate);
     }
 }

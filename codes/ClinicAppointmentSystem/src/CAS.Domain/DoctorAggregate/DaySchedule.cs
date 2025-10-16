@@ -20,37 +20,29 @@ public class DaySchedule
         //        //Saturday => 18:00 => 19:00
         //        //Saturday => 19:00 => 20:00
         var result = new List<DaySchedule2XXX>();
-        foreach (var hour in Hours)
+
+        foreach (var workingHours in Hours)
         {
-            var insideResult=new List<DaySchedule2XXX>();
-            var hourDiff = hour.EndTime - hour.StartTime;
-            var sessionCount = hourDiff.TotalMinutes / sessionDuration;
+            var startTime = workingHours.StartTime;
+            var endTime = workingHours.EndTime;
 
-            var firstDayOfScheduleXXX = new DaySchedule2XXX()
+            while (startTime + TimeSpan.FromMinutes(sessionDuration) <= endTime)
             {
-                WorkDay = WorkDay,
-                StartTime = hour.StartTime,
-                EndTime = hour.StartTime + TimeSpan.FromMinutes(sessionDuration),
-            };
-
-            insideResult.Add(firstDayOfScheduleXXX);
-
-            for (var i = 1; i < sessionCount; i++)
-            {
-                var previousSessionEndTime = insideResult[i - 1].EndTime;
-                var session = new DaySchedule2XXX()
+                var session = new DaySchedule2XXX
                 {
                     WorkDay = WorkDay,
-                    StartTime = previousSessionEndTime,
-                    EndTime = previousSessionEndTime + TimeSpan.FromMinutes(sessionDuration),
+                    StartTime = startTime,
+                    EndTime = startTime + TimeSpan.FromMinutes(sessionDuration)
                 };
-                insideResult.Add(session);
+
+                result.Add(session);
+
+                startTime = session.EndTime + TimeSpan.FromMinutes(restDuration);
+                }
             }
-            result.AddRange(insideResult);
-        }
 
+            return result;
 
-        return result;
     }
 }
 
