@@ -79,7 +79,40 @@ public class DayScheduleTests
     }
 
     //10:00 => 12:00 sessionDuration 45 => 10:00 => 10:45 / 10:45 => 11:30 / should not create 11:30 => 12:15  
+    [Fact] 
+
+    public void should_generate_sessions_with_extra_hours()
+    {
+        var daySchedule = new DaySchedule()
+        {
+            WorkDay = DayOfWeek.Saturday,
+            Hours = new List<WorkingHours>()
+            {
+                new WorkingHours()
+                {
+                    StartTime = TimeSpan.Parse("10:00"),
+                    EndTime = TimeSpan.Parse("12:00"),
+                }
+            }
+        };
+
+        int sessionDuration = 45;
+        int restDuration = 0;
+        var result = daySchedule.Generate(sessionDuration, restDuration);
+
+
+        result.Count.Should().Be(2);
+
+        result.First().StartTime.Should().Be(TimeSpan.Parse("10:00"));
+        result.First().EndTime.Should().Be(TimeSpan.Parse("10:45"));
+
+        result.Last().StartTime.Should().Be(TimeSpan.Parse("10:45"));
+        result.Last().EndTime.Should().Be(TimeSpan.Parse("11:30"));
+    }
+
  
+
+    //10:00 => 12:00 sessionDuration 45 , restDuration = 15 => 10:00 => 10:45 / 11:00 => 12:00
     [Fact]
     public void should_generate_hours_with_session_and_rest_duration()
     {
@@ -100,18 +133,16 @@ public class DayScheduleTests
         int restDuration = 15;
         var result = daySchedule.Generate(sessionDuration, restDuration);
 
-     
+
         result.Count.Should().Be(2);
-        
+
         result.First().StartTime.Should().Be(TimeSpan.Parse("10:00"));
         result.First().EndTime.Should().Be(TimeSpan.Parse("10:45"));
 
         result.Last().StartTime.Should().Be(TimeSpan.Parse("11:00"));
         result.Last().EndTime.Should().Be(TimeSpan.Parse("11:45"));
     }
- 
-
-    //10:00 => 12:00 sessionDuration 45 , restDuration = 15 => 10:00 => 10:45 / 11:00 => 12:00
+   
     //10:00 => 12:00 sessionDuration 30 , restDuration = 15 => 10:00 => 10:30 / 10:45 => 11:30 / should not create 11:45 => 12:15
     
 }
